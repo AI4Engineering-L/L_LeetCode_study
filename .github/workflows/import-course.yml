@@ -1,0 +1,65 @@
+name: Import executed course
+
+on:
+  push:
+    branches: [main]
+    paths: ['.course-sync/READY.json']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: course-import
+  cancel-in-progress: false
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Import validated local files
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import lzma
+          from pathlib import Path, PurePosixPath
+
+          root = Path.cwd()
+          staging = root / '.course-sync'
+          ready = json.loads((staging / 'READY.json').read_text())
+          names = ready['parts']
+          if not names or any(PurePosixPath(n).name != n for n in names):
+              raise ValueError('Invalid payload part names')
+          packed = b''.join((staging / n).read_bytes() for n in names)
+          if len(packed) != ready['compressed_bytes']:
+              raise ValueError('Payload size mismatch')
+          files = json.loads(lzma.decompress(packed).decode('utf-8'))
+          if sum(name.endswith('.ipynb') for name in files) != 175:
+              raise ValueError('Expected exactly 175 notebook files')
+          allowed_roots = {'notebooks', 'scripts', 'specs', 'reports'}
+          allowed_files = {'README.md', 'COURSE_INDEX.md', 'requirements.txt', '.gitignore'}
+          for name, text in files.items():
+              path = PurePosixPath(name)
+              if path.is_absolute() or '..' in path.parts or not path.parts:
+                  raise ValueError(f'Unsafe path: {name}')
+              if path.parts[0] not in allowed_roots and name not in allowed_files:
+                  raise ValueError(f'Unapproved course path: {name}')
+              if not isinstance(text, str):
+                  raise ValueError(f'Expected UTF-8 text: {name}')
+          for name, text in files.items():
+              path = root / name
+              path.parent.mkdir(parents=True, exist_ok=True)
+              path.write_text(text, encoding='utf-8')
+          for name in names + ['READY.json']:
+              (staging / name).unlink()
+          staging.rmdir()
+          print(f'Imported {len(files)} files including 175 executed notebooks.')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- README.md COURSE_INDEX.md requirements.txt .gitignore notebooks scripts specs reports .course-sync
+          git commit -m 'feat: publish 175 executed LeetCode course notebooks'
+          git push origin HEAD:main
