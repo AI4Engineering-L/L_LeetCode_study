@@ -1,0 +1,5 @@
+# Exact versions used for this delivery. External runtimes: Node.js and Bash tools.
+nbformat==5.10.4
+nbclient==0.10.4
+ipykernel==7.2.0
+pandas==2.2.3

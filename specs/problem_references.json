@@ -1,0 +1,5564 @@
+{
+  "date": "2026-09-23",
+  "note": "仅含本课程代表题；未查到官方页面的条目明确标记为生成前核验。未核对付费状态及逐题语言支持。",
+  "problems": [
+    {
+      "id": 1,
+      "title": "Two Sum",
+      "official_url": "https://leetcode.com/problems/two-sum/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N011",
+          "role": "comparison"
+        },
+        {
+          "id": "N019",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Longest Substring Without Repeating Characters",
+      "official_url": "https://leetcode.com/problems/longest-substring-without-repeating-characters/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N029",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Longest Palindromic Substring",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N120",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "title": "String to Integer (atoi)",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N023",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Regular Expression Matching",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N105",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Container With Most Water",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N027",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "title": "3Sum",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N027",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "title": "Remove Nth Node From End of List",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N047",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "title": "Valid Parentheses",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N051",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "title": "Merge Two Sorted Lists",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N048",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "title": "Merge k Sorted Lists",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N059",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "title": "Reverse Nodes in k-Group",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N050",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "title": "Remove Duplicates from Sorted Array",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N026",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "title": "Remove Element",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N017",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "title": "Find the Index of the First Occurrence in a String",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N118",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 33,
+      "title": "Search in Rotated Sorted Array",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N044",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 34,
+      "title": "Find First and Last Position of Element in Sorted Array",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N042",
+          "role": "canonical"
+        },
+        {
+          "id": "N171",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "title": "Search Insert Position",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N013",
+          "role": "preview"
+        },
+        {
+          "id": "N042",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "title": "Sudoku Solver",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N068",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "title": "Combination Sum",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N065",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "title": "Combination Sum II",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N065",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "title": "Trapping Rain Water",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N055",
+          "role": "comparison"
+        },
+        {
+          "id": "N175",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "title": "Multiply Strings",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N146",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "title": "Wildcard Matching",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N105",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "title": "Jump Game II",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N094",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "title": "Permutations",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N064",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "title": "Permutations II",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N065",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 48,
+      "title": "Rotate Image",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N018",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "title": "Group Anagrams",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N020",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "title": "Pow(x, n)",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N062",
+          "role": "preview"
+        },
+        {
+          "id": "N063",
+          "role": "canonical"
+        },
+        {
+          "id": "N128",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 51,
+      "title": "N-Queens",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N068",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "title": "Maximum Subarray",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N015",
+          "role": "comparison"
+        },
+        {
+          "id": "N016",
+          "role": "comparison"
+        },
+        {
+          "id": "N099",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "title": "Spiral Matrix",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N018",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "title": "Jump Game",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N094",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "title": "Merge Intervals",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N035",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 57,
+      "title": "Insert Interval",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N035",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 62,
+      "title": "Unique Paths",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N100",
+          "role": "canonical"
+        },
+        {
+          "id": "N129",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 63,
+      "title": "Unique Paths II",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N100",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 64,
+      "title": "Minimum Path Sum",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N100",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 65,
+      "title": "Valid Number",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N023",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 67,
+      "title": "Add Binary",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N124",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 70,
+      "title": "Climbing Stairs",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N098",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 71,
+      "title": "Simplify Path",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N051",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 72,
+      "title": "Edit Distance",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N104",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 74,
+      "title": "Search a 2D Matrix",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N044",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 76,
+      "title": "Minimum Window Substring",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N029",
+          "role": "canonical"
+        },
+        {
+          "id": "N173",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 77,
+      "title": "Combinations",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N064",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 78,
+      "title": "Subsets",
+      "official_url": "https://leetcode.com/problems/subsets/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N064",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 79,
+      "title": "Word Search",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N067",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 80,
+      "title": "Remove Duplicates from Sorted Array II",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N026",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 81,
+      "title": "Search in Rotated Sorted Array II",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N044",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 84,
+      "title": "Largest Rectangle in Histogram",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N055",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 90,
+      "title": "Subsets II",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N065",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 91,
+      "title": "Decode Ways",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N105",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 92,
+      "title": "Reverse Linked List II",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N046",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 93,
+      "title": "Restore IP Addresses",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N066",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 94,
+      "title": "Binary Tree Inorder Traversal",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N069",
+          "role": "canonical"
+        },
+        {
+          "id": "N076",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 96,
+      "title": "Unique Binary Search Trees",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N129",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 98,
+      "title": "Validate Binary Search Tree",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N073",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "title": "Binary Tree Level Order Traversal",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N070",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 103,
+      "title": "Binary Tree Zigzag Level Order Traversal",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N070",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 104,
+      "title": "Maximum Depth of Binary Tree",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N071",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 105,
+      "title": "Construct Binary Tree from Preorder and Inorder Traversal",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N074",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 106,
+      "title": "Construct Binary Tree from Inorder and Postorder Traversal",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N074",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 110,
+      "title": "Balanced Binary Tree",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N071",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 112,
+      "title": "Path Sum",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N072",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 113,
+      "title": "Path Sum II",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N072",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 114,
+      "title": "Flatten Binary Tree to Linked List",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N076",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 115,
+      "title": "Distinct Subsequences",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N104",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 118,
+      "title": "Pascal's Triangle",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N129",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 121,
+      "title": "Best Time to Buy and Sell Stock",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N106",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 122,
+      "title": "Best Time to Buy and Sell Stock II",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N106",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 124,
+      "title": "Binary Tree Maximum Path Sum",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N072",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 125,
+      "title": "Valid Palindrome",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N025",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 128,
+      "title": "Longest Consecutive Sequence",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N021",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 131,
+      "title": "Palindrome Partitioning",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N066",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 133,
+      "title": "Clone Graph",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N080",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 134,
+      "title": "Gas Station",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N095",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 135,
+      "title": "Candy",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N095",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 136,
+      "title": "Single Number",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N125",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 138,
+      "title": "Copy List with Random Pointer",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N050",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 139,
+      "title": "Word Break",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N105",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 141,
+      "title": "Linked List Cycle",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N047",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 142,
+      "title": "Linked List Cycle II",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N047",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 143,
+      "title": "Reorder List",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N049",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 144,
+      "title": "Binary Tree Preorder Traversal",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N069",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 145,
+      "title": "Binary Tree Postorder Traversal",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N069",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 146,
+      "title": "LRU Cache",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N147",
+          "role": "canonical"
+        },
+        {
+          "id": "N171",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 148,
+      "title": "Sort List",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N048",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 149,
+      "title": "Max Points on a Line",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N133",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 150,
+      "title": "Evaluate Reverse Polish Notation",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N052",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 160,
+      "title": "Intersection of Two Linked Lists",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N050",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 162,
+      "title": "Find Peak Element",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N044",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 164,
+      "title": "Maximum Gap",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N040",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 167,
+      "title": "Two Sum II - Input Array Is Sorted",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N025",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 169,
+      "title": "Majority Element",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N063",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 173,
+      "title": "Binary Search Tree Iterator",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N149",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 174,
+      "title": "Dungeon Game",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N100",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 175,
+      "title": "Combine Two Tables",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N153",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 178,
+      "title": "Rank Scores",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N155",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 180,
+      "title": "Consecutive Numbers",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N155",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 181,
+      "title": "Employees Earning More Than Their Managers",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N153",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 183,
+      "title": "Customers Who Never Order",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N154",
+          "role": "canonical"
+        },
+        {
+          "id": "N158",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 184,
+      "title": "Department Highest Salary",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N154",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 185,
+      "title": "Department Top Three Salaries",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N155",
+          "role": "canonical"
+        },
+        {
+          "id": "N159",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 187,
+      "title": "Repeated DNA Sequences",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N119",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 188,
+      "title": "Best Time to Buy and Sell Stock IV",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N106",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 189,
+      "title": "Rotate Array",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N024",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 190,
+      "title": "Reverse Bits",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N124",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 191,
+      "title": "Number of 1 Bits",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N124",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 192,
+      "title": "Word Frequency",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N160",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 193,
+      "title": "Valid Phone Numbers",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N160",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 194,
+      "title": "Transpose File",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N160",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 195,
+      "title": "Tenth Line",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N160",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 197,
+      "title": "Rising Temperature",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N156",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 198,
+      "title": "House Robber",
+      "official_url": "https://leetcode.com/problems/house-robber/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N099",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 199,
+      "title": "Binary Tree Right Side View",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N070",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 200,
+      "title": "Number of Islands",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N080",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 203,
+      "title": "Remove Linked List Elements",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N045",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 204,
+      "title": "Count Primes",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N127",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 205,
+      "title": "Isomorphic Strings",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N022",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 206,
+      "title": "Reverse Linked List",
+      "official_url": "https://leetcode.com/problems/reverse-linked-list/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N046",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 207,
+      "title": "Course Schedule",
+      "official_url": "https://leetcode.com/problems/course-schedule/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N082",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 208,
+      "title": "Implement Trie (Prefix Tree)",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N077",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 209,
+      "title": "Minimum Size Subarray Sum",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N168",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 210,
+      "title": "Course Schedule II",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N082",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 211,
+      "title": "Design Add and Search Words Data Structure",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N078",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 212,
+      "title": "Word Search II",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N078",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 213,
+      "title": "House Robber II",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N099",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 214,
+      "title": "Shortest Palindrome",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N120",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 215,
+      "title": "Kth Largest Element in an Array",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N012",
+          "role": "preview"
+        },
+        {
+          "id": "N041",
+          "role": "canonical"
+        },
+        {
+          "id": "N058",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 217,
+      "title": "Contains Duplicate",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N007",
+          "role": "warmup"
+        },
+        {
+          "id": "N012",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 220,
+      "title": "Contains Duplicate III",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N139",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 223,
+      "title": "Rectangle Area",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N133",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 224,
+      "title": "Basic Calculator",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N052",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 226,
+      "title": "Invert Binary Tree",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N076",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 227,
+      "title": "Basic Calculator II",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N052",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 230,
+      "title": "Kth Smallest Element in a BST",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N073",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 232,
+      "title": "Implement Queue using Stacks",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N014",
+          "role": "preview"
+        },
+        {
+          "id": "N053",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 233,
+      "title": "Number of Digit One",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N113",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 234,
+      "title": "Palindrome Linked List",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N049",
+          "role": "canonical"
+        },
+        {
+          "id": "N171",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 235,
+      "title": "Lowest Common Ancestor of a Binary Search Tree",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N075",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 236,
+      "title": "Lowest Common Ancestor of a Binary Tree",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N075",
+          "role": "canonical"
+        },
+        {
+          "id": "N141",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 238,
+      "title": "Product of Array Except Self",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N031",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 239,
+      "title": "Sliding Window Maximum",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N056",
+          "role": "canonical"
+        },
+        {
+          "id": "N138",
+          "role": "extension"
+        },
+        {
+          "id": "N169",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 242,
+      "title": "Valid Anagram",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N020",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 260,
+      "title": "Single Number III",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N125",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 262,
+      "title": "Trips and Users",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N156",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 283,
+      "title": "Move Zeroes",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N017",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 284,
+      "title": "Peeking Iterator",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N149",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 290,
+      "title": "Word Pattern",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N022",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 292,
+      "title": "Nim Game",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N132",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 295,
+      "title": "Find Median from Data Stream",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N060",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 297,
+      "title": "Serialize and Deserialize Binary Tree",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N074",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 300,
+      "title": "Longest Increasing Subsequence",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N016",
+          "role": "preview"
+        },
+        {
+          "id": "N103",
+          "role": "canonical"
+        },
+        {
+          "id": "N168",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 303,
+      "title": "Range Sum Query - Immutable",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N031",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 304,
+      "title": "Range Sum Query 2D - Immutable",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N033",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 307,
+      "title": "Range Sum Query - Mutable",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N135",
+          "role": "canonical"
+        },
+        {
+          "id": "N136",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 309,
+      "title": "Best Time to Buy and Sell Stock with Cooldown",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N106",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 312,
+      "title": "Burst Balloons",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N107",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 315,
+      "title": "Count of Smaller Numbers After Self",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N134",
+          "role": "preview"
+        },
+        {
+          "id": "N135",
+          "role": "canonical"
+        },
+        {
+          "id": "N143",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 316,
+      "title": "Remove Duplicate Letters",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N097",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 322,
+      "title": "Coin Change",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N098",
+          "role": "preview"
+        },
+        {
+          "id": "N102",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 327,
+      "title": "Count of Range Sum",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N169",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 329,
+      "title": "Longest Increasing Path in a Matrix",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N111",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 332,
+      "title": "Reconstruct Itinerary",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N090",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 337,
+      "title": "House Robber III",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N109",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 338,
+      "title": "Counting Bits",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N124",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 341,
+      "title": "Flatten Nested List Iterator",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N149",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 347,
+      "title": "Top K Frequent Elements",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N058",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 349,
+      "title": "Intersection of Two Arrays",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N021",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 354,
+      "title": "Russian Doll Envelopes",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N103",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 355,
+      "title": "Design Twitter",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N151",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 372,
+      "title": "Super Pow",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N128",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 373,
+      "title": "Find K Pairs with Smallest Sums",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N059",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 377,
+      "title": "Combination Sum IV",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N102",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 380,
+      "title": "Insert Delete GetRandom O(1)",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N148",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 381,
+      "title": "Insert Delete GetRandom O(1) - Duplicates allowed",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N148",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 384,
+      "title": "Shuffle an Array",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N131",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 387,
+      "title": "First Unique Character in a String",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N008",
+          "role": "warmup"
+        }
+      ]
+    },
+    {
+      "id": 398,
+      "title": "Random Pick Index",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N131",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 399,
+      "title": "Evaluate Division",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N140",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 402,
+      "title": "Remove K Digits",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N097",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 410,
+      "title": "Split Array Largest Sum",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N043",
+          "role": "canonical"
+        },
+        {
+          "id": "N170",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 412,
+      "title": "Fizz Buzz",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N003",
+          "role": "warmup"
+        }
+      ]
+    },
+    {
+      "id": 416,
+      "title": "Partition Equal Subset Sum",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N101",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 421,
+      "title": "Maximum XOR of Two Numbers in an Array",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N125",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 435,
+      "title": "Non-overlapping Intervals",
+      "official_url": "https://leetcode.com/problems/non-overlapping-intervals/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N093",
+          "role": "canonical"
+        },
+        {
+          "id": "N170",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 437,
+      "title": "Path Sum III",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N072",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 443,
+      "title": "String Compression",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N024",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 450,
+      "title": "Delete Node in a BST",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N073",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 459,
+      "title": "Repeated Substring Pattern",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N118",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 460,
+      "title": "LFU Cache",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N147",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 464,
+      "title": "Can I Win",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N112",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 470,
+      "title": "Implement Rand10() Using Rand7()",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N131",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 480,
+      "title": "Sliding Window Median",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N060",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 486,
+      "title": "Predict the Winner",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N115",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 493,
+      "title": "Reverse Pairs",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N038",
+          "role": "extension"
+        },
+        {
+          "id": "N135",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 494,
+      "title": "Target Sum",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N101",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 496,
+      "title": "Next Greater Element I",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N054",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 502,
+      "title": "IPO",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N096",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 503,
+      "title": "Next Greater Element II",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N054",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 509,
+      "title": "Fibonacci Number",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N062",
+          "role": "comparison"
+        },
+        {
+          "id": "N130",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 518,
+      "title": "Coin Change II",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N102",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 523,
+      "title": "Continuous Subarray Sum",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N032",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 528,
+      "title": "Random Pick with Weight",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N131",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 542,
+      "title": "01 Matrix",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N081",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 543,
+      "title": "Diameter of Binary Tree",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N071",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 547,
+      "title": "Number of Provinces",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N080",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 550,
+      "title": "Game Play Analysis IV",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N156",
+          "role": "canonical"
+        },
+        {
+          "id": "N159",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 560,
+      "title": "Subarray Sum Equals K",
+      "official_url": "https://leetcode.com/problems/subarray-sum-equals-k/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N032",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 567,
+      "title": "Permutation in String",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N028",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 570,
+      "title": "Managers with at Least 5 Direct Reports",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N153",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 584,
+      "title": "Find Customer Referee",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N152",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 587,
+      "title": "Erect the Fence",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N133",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 595,
+      "title": "Big Countries",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N152",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 601,
+      "title": "Human Traffic of Stadium",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N155",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 621,
+      "title": "Task Scheduler",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N172",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 622,
+      "title": "Design Circular Queue",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N053",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 629,
+      "title": "K Inverse Pairs Array",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N117",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 630,
+      "title": "Course Schedule III",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N096",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 641,
+      "title": "Design Circular Deque",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N053",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 643,
+      "title": "Maximum Average Subarray I",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N028",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 646,
+      "title": "Maximum Length of Pair Chain",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N093",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 647,
+      "title": "Palindromic Substrings",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N120",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 648,
+      "title": "Replace Words",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N077",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 673,
+      "title": "Number of Longest Increasing Subsequence",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N103",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 684,
+      "title": "Redundant Connection",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N083",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 688,
+      "title": "Knight Probability in Chessboard",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N114",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 691,
+      "title": "Stickers to Spell Word",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N112",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 703,
+      "title": "Kth Largest Element in a Stream",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N057",
+          "role": "preview"
+        },
+        {
+          "id": "N058",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 704,
+      "title": "Binary Search",
+      "official_url": "https://leetcode.com/problems/binary-search/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N042",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 707,
+      "title": "Design Linked List",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N045",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 714,
+      "title": "Best Time to Buy and Sell Stock with Transaction Fee",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N106",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 715,
+      "title": "Range Module",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N137",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 718,
+      "title": "Maximum Length of Repeated Subarray",
+      "official_url": "https://leetcode.com/problems/maximum-length-of-repeated-subarray/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N123",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 721,
+      "title": "Accounts Merge",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N083",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 732,
+      "title": "My Calendar III",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N137",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 739,
+      "title": "Daily Temperatures",
+      "official_url": "https://leetcode.com/problems/daily-temperatures/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N054",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 743,
+      "title": "Network Delay Time",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N084",
+          "role": "canonical"
+        },
+        {
+          "id": "N170",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 752,
+      "title": "Open the Lock",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N144",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 767,
+      "title": "Reorganize String",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N097",
+          "role": "extension"
+        },
+        {
+          "id": "N172",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 773,
+      "title": "Sliding Puzzle",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N144",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 785,
+      "title": "Is Graph Bipartite?",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N087",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 787,
+      "title": "Cheapest Flights Within K Stops",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N085",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 802,
+      "title": "Find Eventual Safe States",
+      "official_url": "https://leetcode.com/problems/find-eventual-safe-states/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N088",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 805,
+      "title": "Split Array With Same Average",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N142",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 808,
+      "title": "Soup Servings",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N114",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 810,
+      "title": "Chalkboard XOR Game",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N132",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 834,
+      "title": "Sum of Distances in Tree",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N110",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 836,
+      "title": "Rectangle Overlap",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N133",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 837,
+      "title": "New 21 Game",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N114",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 847,
+      "title": "Shortest Path Visiting All Nodes",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N144",
+          "role": "canonical"
+        },
+        {
+          "id": "N174",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 862,
+      "title": "Shortest Subarray with Sum at Least K",
+      "official_url": "https://leetcode.com/problems/shortest-subarray-with-sum-at-least-k/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N056",
+          "role": "canonical"
+        },
+        {
+          "id": "N168",
+          "role": "comparison"
+        },
+        {
+          "id": "N173",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 875,
+      "title": "Koko Eating Bananas",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N043",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 876,
+      "title": "Middle of the Linked List",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N047",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 877,
+      "title": "Stone Game",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N115",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 886,
+      "title": "Possible Bipartition",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N087",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 902,
+      "title": "Numbers At Most N Given Digit Set",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N113",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 907,
+      "title": "Sum of Subarray Minimums",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N055",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 912,
+      "title": "Sort an Array",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N037",
+          "role": "comparison"
+        },
+        {
+          "id": "N038",
+          "role": "canonical"
+        },
+        {
+          "id": "N039",
+          "role": "comparison"
+        },
+        {
+          "id": "N040",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 920,
+      "title": "Number of Music Playlists",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N129",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 930,
+      "title": "Binary Subarrays With Sum",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N030",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 968,
+      "title": "Binary Tree Cameras",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N109",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 973,
+      "title": "K Closest Points to Origin",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N041",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 980,
+      "title": "Unique Paths III",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N067",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 981,
+      "title": "Time Based Key-Value Store",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N151",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 986,
+      "title": "Interval List Intersections",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N035",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 992,
+      "title": "Subarrays with K Different Integers",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N030",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 994,
+      "title": "Rotting Oranges",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N081",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 997,
+      "title": "Find the Town Judge",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N079",
+          "role": "warmup"
+        }
+      ]
+    },
+    {
+      "id": 1000,
+      "title": "Minimum Cost to Merge Stones",
+      "official_url": "https://leetcode.com/problems/minimum-cost-to-merge-stones/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N107",
+          "role": "canonical"
+        },
+        {
+          "id": "N145",
+          "role": "extension"
+        },
+        {
+          "id": "N173",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 1011,
+      "title": "Capacity To Ship Packages Within D Days",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N043",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1024,
+      "title": "Video Stitching",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N172",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1032,
+      "title": "Stream of Characters",
+      "official_url": "https://leetcode.com/problems/stream-of-characters/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N121",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 1039,
+      "title": "Minimum Score Triangulation of Polygon",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N107",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1043,
+      "title": "Partition Array for Maximum Sum",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N108",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1044,
+      "title": "Longest Duplicate Substring",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N119",
+          "role": "canonical"
+        },
+        {
+          "id": "N122",
+          "role": "extension"
+        },
+        {
+          "id": "N123",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 1045,
+      "title": "Customers Who Bought All Products",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N154",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1046,
+      "title": "Last Stone Weight",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N057",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1047,
+      "title": "Remove All Adjacent Duplicates In String",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N051",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1049,
+      "title": "Last Stone Weight II",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N101",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1071,
+      "title": "Greatest Common Divisor of Strings",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N126",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1091,
+      "title": "Shortest Path in Binary Matrix",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N081",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1094,
+      "title": "Car Pooling",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N034",
+          "role": "canonical"
+        },
+        {
+          "id": "N036",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1108,
+      "title": "Defanging an IP Address",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N006",
+          "role": "warmup"
+        }
+      ]
+    },
+    {
+      "id": 1109,
+      "title": "Corporate Flight Bookings",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N034",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1114,
+      "title": "Print in Order",
+      "official_url": "https://leetcode.com/problems/print-in-order/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N164",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1115,
+      "title": "Print FooBar Alternately",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N165",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1116,
+      "title": "Print Zero Even Odd",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N165",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1117,
+      "title": "Building H2O",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N166",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1125,
+      "title": "Smallest Sufficient Team",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N112",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1137,
+      "title": "N-th Tribonacci Number",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N130",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 1140,
+      "title": "Stone Game II",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N115",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1143,
+      "title": "Longest Common Subsequence",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N104",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1146,
+      "title": "Snapshot Array",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N150",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1188,
+      "title": "Design Bounded Blocking Queue",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N166",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 1192,
+      "title": "Critical Connections in a Network",
+      "official_url": "https://leetcode.com/problems/critical-connections-in-a-network/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N089",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1195,
+      "title": "Fizz Buzz Multithreaded",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N167",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 1206,
+      "title": "Design Skiplist",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N139",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 1220,
+      "title": "Count Vowels Permutation",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N130",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1226,
+      "title": "The Dining Philosophers",
+      "official_url": "https://leetcode.com/problems/the-dining-philosophers/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N167",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1235,
+      "title": "Maximum Profit in Job Scheduling",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N175",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 1278,
+      "title": "Palindrome Partitioning III",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N108",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1290,
+      "title": "Convert Binary Number in a Linked List to Integer",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N009",
+          "role": "warmup"
+        }
+      ]
+    },
+    {
+      "id": 1314,
+      "title": "Matrix Block Sum",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N033",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1316,
+      "title": "Distinct Echo Substrings",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N119",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 1319,
+      "title": "Number of Operations to Make Network Connected",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N083",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1321,
+      "title": "Restaurant Growth",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N156",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1331,
+      "title": "Rank Transform of an Array",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N134",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1334,
+      "title": "Find the City With the Smallest Number of Neighbors at a Threshold Distance",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N085",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1335,
+      "title": "Minimum Difficulty of a Job Schedule",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N108",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1342,
+      "title": "Number of Steps to Reduce a Number to Zero",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N004",
+          "role": "warmup"
+        }
+      ]
+    },
+    {
+      "id": 1349,
+      "title": "Maximum Students Taking Exam",
+      "official_url": "https://leetcode.com/problems/maximum-students-taking-exam/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N087",
+          "role": "extension"
+        },
+        {
+          "id": "N092",
+          "role": "extension"
+        },
+        {
+          "id": "N116",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1368,
+      "title": "Minimum Cost to Make at Least One Valid Path in a Grid",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N084",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1406,
+      "title": "Stone Game III",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N115",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1411,
+      "title": "Number of Ways to Paint N × 3 Grid",
+      "official_url": "https://leetcode.com/problems/number-of-ways-to-paint-n-3-grid/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N116",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1425,
+      "title": "Constrained Subsequence Sum",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N117",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1438,
+      "title": "Longest Continuous Subarray With Absolute Diff Less Than or Equal to Limit",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N138",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 1439,
+      "title": "Find the Kth Smallest Sum of a Matrix With Sorted Rows",
+      "official_url": "https://leetcode.com/problems/find-the-kth-smallest-sum-of-a-matrix-with-sorted-rows/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N175",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 1478,
+      "title": "Allocate Mailboxes",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N145",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 1480,
+      "title": "Running Sum of 1d Array",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N010",
+          "role": "warmup"
+        }
+      ]
+    },
+    {
+      "id": 1483,
+      "title": "Kth Ancestor of a Tree Node",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N141",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1489,
+      "title": "Find Critical and Pseudo-Critical Edges in Minimum Spanning Tree",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N086",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 1492,
+      "title": "The kth Factor of n",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N126",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1510,
+      "title": "Stone Game IV",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N132",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1568,
+      "title": "Minimum Number of Days to Disconnect Island",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N089",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 1584,
+      "title": "Min Cost to Connect All Points",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N086",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1667,
+      "title": "Fix Names in a Table",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N159",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1678,
+      "title": "Goal Parser Interpretation",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N006",
+          "role": "warmup"
+        }
+      ]
+    },
+    {
+      "id": 1696,
+      "title": "Jump Game VI",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N117",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1697,
+      "title": "Checking Existence of Edge Length Limited Paths",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N143",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1755,
+      "title": "Closest Subsequence Sum",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N142",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1757,
+      "title": "Recyclable and Low Fat Products",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N152",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1834,
+      "title": "Single-Threaded CPU",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N061",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1851,
+      "title": "Minimum Interval to Include Each Query",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N143",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1857,
+      "title": "Largest Color Value in a Directed Graph",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N111",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1882,
+      "title": "Process Tasks Using Servers",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N061",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1920,
+      "title": "Build Array from Permutation",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N005",
+          "role": "warmup"
+        }
+      ]
+    },
+    {
+      "id": 1922,
+      "title": "Count Good Numbers",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N128",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1929,
+      "title": "Concatenation of Array",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N005",
+          "role": "warmup"
+        }
+      ]
+    },
+    {
+      "id": 1931,
+      "title": "Painting a Grid With Three Different Colors",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N116",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1938,
+      "title": "Maximum Genetic Difference Query",
+      "official_url": "https://leetcode.com/problems/maximum-genetic-difference-query/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N174",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 1971,
+      "title": "Find if Path Exists in Graph",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N079",
+          "role": "preview"
+        }
+      ]
+    },
+    {
+      "id": 1979,
+      "title": "Find Greatest Common Divisor of Array",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N126",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2035,
+      "title": "Partition Array Into Two Arrays to Minimize Sum Difference",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N142",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2050,
+      "title": "Parallel Courses III",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N111",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2092,
+      "title": "Find All People With Secret",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N140",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 2097,
+      "title": "Valid Arrangement of Pairs",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N090",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2127,
+      "title": "Maximum Employees to Be Invited to a Meeting",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N091",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2223,
+      "title": "Sum of Scores of Built Strings",
+      "official_url": "https://leetcode.com/problems/sum-of-scores-of-built-strings/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N118",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2235,
+      "title": "Add Two Integers",
+      "official_url": "https://leetcode.com/problems/add-two-integers/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N001",
+          "role": "warmup"
+        }
+      ]
+    },
+    {
+      "id": 2286,
+      "title": "Booking Concert Tickets in Groups",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N136",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 2360,
+      "title": "Longest Cycle in a Graph",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N091",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2376,
+      "title": "Count Special Integers",
+      "official_url": "https://leetcode.com/problems/count-special-integers/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N113",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2406,
+      "title": "Divide Intervals Into Minimum Number of Groups",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N036",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2413,
+      "title": "Smallest Even Multiple",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N002",
+          "role": "warmup"
+        }
+      ]
+    },
+    {
+      "id": 2463,
+      "title": "Minimum Total Distance Traveled",
+      "official_url": "https://leetcode.com/problems/minimum-total-distance-traveled/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N145",
+          "role": "comparison"
+        }
+      ]
+    },
+    {
+      "id": 2469,
+      "title": "Convert the Temperature",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N002",
+          "role": "warmup"
+        }
+      ]
+    },
+    {
+      "id": 2507,
+      "title": "Smallest Value After Replacing With Sum of Prime Factors",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N127",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2523,
+      "title": "Closest Prime Numbers in Range",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N127",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2569,
+      "title": "Handling Sum Queries After Update",
+      "official_url": "https://leetcode.com/problems/handling-sum-queries-after-update/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N137",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2581,
+      "title": "Count Number of Possible Root Nodes",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N110",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 2617,
+      "title": "Minimum Number of Visited Cells in a Grid",
+      "official_url": "https://leetcode.com/problems/minimum-number-of-visited-cells-in-a-grid/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N174",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 2620,
+      "title": "Counter",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N161",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2623,
+      "title": "Memoize",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N162",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2627,
+      "title": "Debounce",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N163",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2629,
+      "title": "Function Composition",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N162",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2635,
+      "title": "Apply Transform Over Each Element in Array",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N162",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2636,
+      "title": "Promise Pool",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N163",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 2637,
+      "title": "Promise Time Limit",
+      "official_url": "https://leetcode.com/problems/promise-time-limit/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N163",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2665,
+      "title": "Counter II",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N161",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2667,
+      "title": "Create Hello World Function",
+      "official_url": "https://leetcode.com/problems/create-hello-world-function/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N161",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2694,
+      "title": "Event Emitter",
+      "official_url": "https://leetcode.com/problems/event-emitter/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N162",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2695,
+      "title": "Array Wrapper",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N161",
+          "role": "extension"
+        }
+      ]
+    },
+    {
+      "id": 2721,
+      "title": "Execute Asynchronous Functions in Parallel",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N163",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2877,
+      "title": "Create a DataFrame from List",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N157",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2882,
+      "title": "Drop Duplicate Rows",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N157",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2883,
+      "title": "Drop Missing Data",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N157",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2886,
+      "title": "Change Data Type",
+      "official_url": null,
+      "identity_status": "verify_before_generation",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N157",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2888,
+      "title": "Reshape Data: Concatenate",
+      "official_url": "https://leetcode.com/problems/reshape-data-concatenate/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N158",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2889,
+      "title": "Reshape Data: Pivot",
+      "official_url": "https://leetcode.com/problems/reshape-data-pivot/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N158",
+          "role": "canonical"
+        }
+      ]
+    },
+    {
+      "id": 2890,
+      "title": "Reshape Data: Melt",
+      "official_url": "https://leetcode.com/problems/reshape-data-melt/",
+      "identity_status": "official_page_checked_2026-09-23",
+      "access_status": "not_checked",
+      "language_support_status": "verify_before_generation",
+      "notebooks": [
+        {
+          "id": "N158",
+          "role": "canonical"
+        }
+      ]
+    }
+  ]
+}
