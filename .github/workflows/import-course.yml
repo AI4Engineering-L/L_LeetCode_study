@@ -16,10 +16,16 @@ concurrency:
 jobs:
   import:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-      - name: Import validated local files
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.5'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+      - name: Restore the complete course package
         shell: bash
         run: |
           python - <<'PY'
@@ -31,14 +37,16 @@ jobs:
           staging = root / '.course-sync'
           ready = json.loads((staging / 'READY.json').read_text())
           names = ready['parts']
-          if not names or any(PurePosixPath(n).name != n for n in names):
+          if not names or len(names) != len(set(names)) or any(PurePosixPath(n).name != n for n in names):
               raise ValueError('Invalid payload part names')
           packed = b''.join((staging / n).read_bytes() for n in names)
           if len(packed) != ready['compressed_bytes']:
               raise ValueError('Payload size mismatch')
           files = json.loads(lzma.decompress(packed).decode('utf-8'))
-          if sum(name.endswith('.ipynb') for name in files) != 175:
-              raise ValueError('Expected exactly 175 notebook files')
+          expected = {n['path'] for n in json.loads(files['specs/curriculum.json'])['notebooks']}
+          actual = {name for name in files if name.endswith('.ipynb')}
+          if actual != expected or len(actual) != 175:
+              raise ValueError('Notebook paths must match all 175 curriculum entries')
           allowed_roots = {'notebooks', 'scripts', 'specs', 'reports'}
           allowed_files = {'README.md', 'COURSE_INDEX.md', 'requirements.txt', '.gitignore'}
           for name, text in files.items():
@@ -53,13 +61,30 @@ jobs:
               path = root / name
               path.parent.mkdir(parents=True, exist_ok=True)
               path.write_text(text, encoding='utf-8')
-          for name in names + ['READY.json']:
+          print(f'Restored {len(files)} course files; fresh execution follows.')
+          PY
+      - name: Install the recorded Python dependencies
+        run: |
+          python -m pip install -r requirements.txt
+          python -m ipykernel install --user --name python3
+      - name: Execute all 175 notebooks in fresh kernels
+        run: python scripts/execute_course.py --workers 2
+      - name: Audit paths, interfaces and saved outputs
+        run: python scripts/audit_course.py
+      - name: Publish validated notebooks and remove transfer parts
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          staging = Path('.course-sync')
+          ready = json.loads((staging / 'READY.json').read_text())
+          for name in ready['parts'] + ['READY.json']:
               (staging / name).unlink()
           staging.rmdir()
-          print(f'Imported {len(files)} files including 175 executed notebooks.')
           PY
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -- README.md COURSE_INDEX.md requirements.txt .gitignore notebooks scripts specs reports .course-sync
-          git commit -m 'feat: publish 175 executed LeetCode course notebooks'
+          git commit -m 'feat: publish 175 freshly executed LeetCode course notebooks'
           git push origin HEAD:main
