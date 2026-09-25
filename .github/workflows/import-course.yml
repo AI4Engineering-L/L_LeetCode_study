@@ -68,7 +68,7 @@ jobs:
           python -m pip install -r requirements.txt
           python -m ipykernel install --user --name python3
       - name: Execute all 175 notebooks in fresh kernels
-        run: python scripts/execute_course.py --workers 2
+        run: python scripts/execute_course.py --workers 1
       - name: Audit paths, interfaces and saved outputs
         run: python scripts/audit_course.py
       - name: Publish validated notebooks and remove transfer parts
