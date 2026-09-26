@@ -3,6 +3,7 @@ from pathlib import Path
 from concurrent.futures import ProcessPoolExecutor, as_completed
 from datetime import datetime, timezone
 import argparse
+import hashlib
 import json
 import platform
 import sqlite3
@@ -19,7 +20,10 @@ def execute_one(path_string):
     path = Path(path_string)
     nb = nbformat.read(path, as_version=4)
     record = {'id': nb.metadata.course.id, 'path':str(path.relative_to(ROOT)),
-              'started_utc':datetime.now(timezone.utc).isoformat()}
+              'started_utc':datetime.now(timezone.utc).isoformat(),
+              'source_sha256':hashlib.sha256(json.dumps(
+                  [[c.cell_type, c.source] for c in nb.cells], ensure_ascii=False,
+                  separators=(',', ':')).encode('utf-8')).hexdigest()}
     start = time.monotonic()
     try:
         nbformat.validate(nb)
@@ -49,7 +53,7 @@ def execute_one(path_string):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--ids', nargs='*', help='e.g. N001 N002; default all existing notebooks')
-    parser.add_argument('--workers',type=int,default=4)
+    parser.add_argument('--workers',type=int,default=1)
     args = parser.parse_args()
     paths = sorted((ROOT/'notebooks').rglob('*.ipynb'))
     if args.ids:

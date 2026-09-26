@@ -1,0 +1,66 @@
+name: Course rewrite validation
+
+on:
+  push:
+    branches: [codex/notebook-comment-rewrite]
+    paths: ['.github/workflows/course-rewrite.yml']
+
+permissions:
+  contents: write
+
+concurrency:
+  group: course-comment-rewrite
+  cancel-in-progress: false
+
+jobs:
+  rewrite:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13.5'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.16.0'
+      - name: Install the recorded dependencies
+        run: |
+          python -m pip install -r requirements.txt
+          python -m ipykernel install --user --name python3
+      - name: Test the transformation and rebuild the complete curriculum
+        run: |
+          python scripts/test_rewrite_from_comments.py
+          python scripts/build_all.py
+      - name: Execute every notebook in a fresh kernel
+        run: python scripts/execute_course.py --workers 1
+      - name: Audit artifacts and independently execute complete programs
+        run: |
+          python scripts/audit_course.py
+          python scripts/verify_rewrite.py
+      - name: Publish validated notebooks on the rewrite branch
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- notebooks reports
+          if ! git diff --cached --quiet; then
+            git commit -m 'feat: publish 175 comment-informed notebooks with independent full-code verification'
+            git push origin HEAD:codex/notebook-comment-rewrite
+          fi
+          git archive --format=zip --output=rewritten-course.zip HEAD
+      - name: Save executed course archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: rewritten-leetcode-course
+          path: rewritten-course.zip
+          if-no-files-found: error
+          retention-days: 14
+      - name: Save validation diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rewrite-validation-reports
+          path: reports/
+          if-no-files-found: error
+          retention-days: 14

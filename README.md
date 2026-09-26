@@ -8,7 +8,9 @@
 
 先打开 [课程索引](COURSE_INDEX.md)，再从 [N001：Notebook 与判题接口](notebooks/00_foundations/001_jupyter_and_judge.ipynb) 开始。章节编号是稳定文件索引；学习顺序以 [curriculum.json](specs/curriculum.json) 的 `learning_order` 为准，避免状态压缩、数位 DP 等章节缺少位运算先修。
 
-每章包含：教学目标和先修、从问题推导到算法、核心实现、正确性与复杂度、真实小实例可视化、自动测试、练习、代表题映射。核心算法可在 Notebook 中直接阅读，不依赖不透明的外部算法库。
+每章包含：**通俗解释、基础知识、手算推导、核心代码片段、分段可执行实现、示例与可视化、测试用例讲解、练习提示、可独立运行的完整代码**。完整代码包含全部导入、接口和回归测试，可重启内核后只运行这一格，或者复制为 `.py` 文件执行。
+
+本次改写吸收 `comment/README.md` 和 175 份同名逐章意见，保留原算法及测试，并校正部分算例和论证。指定的 `comment/REWRITE_BRIEF.md` 在读取的仓库快照中不存在，未将其视为已读。详见 [改写验收报告](reports/REWRITE_REPORT.md)。
 
 ## 安装与使用
 
@@ -32,20 +34,22 @@ python scripts/audit_course.py
 重新执行全部章节：
 
 ```bash
-python scripts/execute_course.py --workers 4
+python scripts/execute_course.py --workers 1
 python scripts/audit_course.py
+python scripts/verify_rewrite.py
 ```
 
 执行器每章使用新的 Jupyter 内核，工作目录为该 Notebook 所在目录，`allow_errors=False`。失败会记入报告并以非零退出码结束；不会静默返回伪造答案。不要同时启动多个执行器写同一报告。
 
 ## 修改教程
 
-`notebooks/` 是已执行、可直接学习的交付件；`scripts/lessons_*.py` 是本次教程的可维护生成源。修改对应源文件后，仅重建和重跑受影响章节：
+`notebooks/` 是已执行、可直接学习的交付件；`scripts/lessons_*.py` 是算法、示例和测试的生成源；`comment/` 提供逐章详细讲解，`scripts/rewrite_from_comments.py` 负责整合、代码排版与已记录的文字纠错。修改对应源文件后，仅重建和重跑受影响章节：
 
 ```bash
 python scripts/build_all.py --ids N029
 python scripts/execute_course.py --ids N029 --workers 1
 python scripts/audit_course.py
+python scripts/verify_rewrite.py --ids N029
 ```
 
 **重建会清除该章旧输出。** 不重跑就不能继续声称重建后的文件已经执行通过。直接手改 Notebook 可以临时实验，但下次重建会被生成源覆盖；需要长期保留的修改应回写相应源文件。
@@ -73,6 +77,11 @@ scripts/native/          原生 SQL / Shell / JavaScript / 并发 Python
 scripts/build_all.py      选择性重建
 scripts/execute_course.py 空内核执行与唯一执行报告
 scripts/audit_course.py   固定路径、接口标记与保存输出检查
+scripts/rewrite_from_comments.py 逐章讲解整合、代码分段、完整代码
+scripts/verify_rewrite.py 结构、原算法/测试保留、完整代码隔离执行
+comment/                 保留的 175 份逐章意见与索引
+reports/REWRITE_REPORT.md 改写验收摘要
+reports/rewrite_verification.json 逐章源码与独立运行证据
 specs/                   原始课程规格与代表题映射
 reports/execution.json   逐章实际执行证据与环境
 COURSE_INDEX.md           全部章节入口与先修学习顺序

@@ -90,6 +90,8 @@ def build(selected=None):
                        'runtime':spec['runtime'],'generation':'implemented','execution':'not_run',
                        'problem_statement_review':'not_reverified_in_this_build'}
         })
+        from rewrite_from_comments import enrich_notebook
+        nb = enrich_notebook(nb, spec, ROOT)
         nbformat.validate(nb)
         path = ROOT / spec['path']
         path.parent.mkdir(parents=True, exist_ok=True)
