@@ -1,0 +1,154 @@
+# N119 · 滚动哈希与子串比较 —— 说人话详解
+
+> 对应 notebook：`notebooks/14_string_algorithms/119_rolling_hash_substrings.ipynb`
+
+## 一、这章要解决什么问题？（问题描述）
+
+比较两个长度为 L 的子串，直接 `==` 要花 O(L)。子串一多（比如所有起点，共 O(n) 个），反复比较就贵了。滚动哈希的思路是：**预先扫一遍串，把每个子串映射成一个整数，之后"看起来一样吗"先比整数，O(1) 出结果**。本章用它在 LC1044"最长重复子串"上落地：
+
+> 给定字符串 s，找出其中出现至少两次的最长子串（两次出现可以重叠），返回这个子串本身。
+
+**具体到数字的例子：** `s='banana'`，答案是 **`'ana'`**——`ana` 在下标 1 和下标 3 各出现一次（重叠共享了 'a'），长度 3；长度 4 的三个子串 `bana`、`anan`、`nana` 互不相同，所以 3 就是极限。本章还特别强调一个正确性观念：**哈希相等不等于字符串相等**（可能碰撞），所以实现采用"哈希先分桶 + 原串精确复核"，就算有人故意造碰撞，答案也不会错，只会变慢。
+
+## 二、关键概念（定义）
+
+- **多项式前缀哈希：** 把字符串看成一个多项式的系数——第 i 个字符是系数，基数为 B——串的哈希就是这个多项式对大数 mod 取模的值。预处理出前缀哈希数组 P，之后任何子串的哈希都能用 P 的减法在 O(1) 算出来（见第三节）。
+- **幂表（power）：** 预先算好 B^0, B^1, …, B^n（都模 mod），查询时直接取用，省去重复做幂运算。
+- **模数（mod）：** 哈希值对一个大质数取模，让数字保持在固定范围内可快速运算。代价是不同串可能模出同一个值。
+- **碰撞（collision）：** 两个不同的字符串哈希值相同。哈希相等只是"字符串相等"的**必要条件**（真相等 ⇒ 哈希必相等），不是充分条件。把它当充分条件用就会误判。
+- **哈希分桶 + 原串精确比较：** 用哈希值当字典的 key，把"可能相同"的子串起点分到同一个桶里；桶内再用真正的字符串 `==` 逐对确认。这样哈希只承担"筛掉大部分不同"的工作，正确性由精确比较兜底。
+- **双哈希：** 用两组不同的 (base, mod) 各算一遍，两个哈希都相等才认为可能相等。碰撞概率从约 n²/mod 降到约 n²/(mod₁·mod₂)，但**仍然是概率保证**，不能替代精确复核。
+- **二分答案：** "存在长度为 L 的重复子串"具有单调可行性：L 可行 ⇒ L−1 也可行（取前 L−1 个字符还是重复）。可行长度恰好是 0..best 的一段前缀，所以能对 L 二分。
+- **精确复核代价：** 桶内比较是真实字符比较，碰撞越多比较越多。平时几乎不碰撞，最坏（被故意攻击）可能退化，本章实现"不变错，只变慢"。
+
+## 三、解决思路（一步步推导）
+
+### 3.1 前缀哈希与减法公式
+
+- **Step 1：** 定义 P[0]=0，每读入一个字符 c 就 P[k+1] = (P[k]·B + val(c)) mod m，其中 val(c)=ord(c)+1（加 1 保证任何字符的系数都是正数，避免"零系数"让不同串天然同哈希）。同时记 power[k]=B^k mod m。
+- **Step 2：** 子串哈希公式 H(l,r) = (P[r] − P[l]·B^(r−l)) mod m。直觉：P[r] 是"前 r 个字符的多项式值"，P[l]·B^(r−l) 恰好是"前 l 个字符在 P[r] 里占据的那部分"，两者相减，剩下的正是 s[l..r) 自己的值。
+- **Step 3：** 用哈希当 key 分桶，桶内精确比较。
+
+**手算演示（为了能心算，把玩具参数取 B=10、不取模，字符系数取 a=1、n=2；代码真实默认是 base=911382323、mod=10^9+7）：** 设 s="anaa"：
+- P 依次为 P[0]=0 → 'a':1 → 'n':1·10+2=12 → 'a':12·10+1=121 → 'a':121·10+1=1211；power=[1,10,100,1000,10000]。
+- query(1,3)（子串 "na"）= P[3] − P[1]·power[2] = 121 − 1·100 = **21**。直接按定义算 "na" = 2·10+1 = 21，吻合。
+- query(0,3)（"ana"）= 121 − 0 = 121 = 1·100+2·10+1 ✓。
+- query(2,4)（"aa"）= P[4] − P[2]·power[2] = 1211 − 12·100 = **11** = 1·10+1 ✓。
+换任何区间都成立：减法把区间外的字符贡献全部抵消，乘幂把指数对齐。
+
+notebook 第 6 格的表格用真实默认参数对 `'banana'` 的四个三字符子串 `ban/ana/nan/ana` 列了哈希值：两个 `ana` 行的哈希完全相同（它们本来就是同一个串），这是"相等 ⇒ 哈希相等"的直接展示。
+
+### 3.2 定长查重：分桶 + 精确复核
+
+- **Step 1：** 给定长度 L，扫所有起点 i=0..n−L，算 H(i, i+L)。
+- **Step 2：** 同哈希的起点进同一个桶。新起点先和桶里已有的每个 j 做 `s[i:i+L]==s[j:j+L]` 精确比较，比中立即返回这个子串。
+- **Step 3：** 桶的语义是"可疑相同"，不是"确实相同"——这就是碰撞不误判的原因。
+
+### 3.3 二分答案
+
+**手算 `longest_duplicate_substring('banana')`（n=6）：**
+- low=0, high=6。mid=3：长度 3 的子串 ban/ana/nan/ana，发现重复 'ana' → best='ana'，往右找 low=4。
+- mid=5：长度 5 的 banan/anana 互不相同 → None，high=4。
+- low=high=4。mid=4：bana/anan/nana 互不相同 → None，high=3。循环结束（low>high）。
+- 返回 **'ana'**。每轮只做一个"定长判定"，判定本身 O(n)，总共 O(log n) 轮。
+
+## 四、代码逐段讲解
+
+### 4.1 `RollingHash` 类
+
+```python
+class RollingHash:
+    def __init__(self,s,base=911382323,mod=1000000007):
+        if mod<=0: raise ValueError('positive modulus required')
+        self.s=s; self.base=base; self.mod=mod; self.prefix=[0]; self.power=[1]
+        for c in s:
+            self.prefix.append((self.prefix[-1]*base+ord(c)+1)%mod)
+            self.power.append(self.power[-1]*base%mod)
+    def query(self,left,right):
+        if not 0<=left<=right<=len(self.s): raise ValueError('invalid half-open range')
+        return (self.prefix[right]-self.prefix[left]*self.power[right-left])%self.mod
+```
+
+- `if mod<=0: raise ValueError(...)`：模数必须是正数，mod=0 会直接除零，挡在构造阶段。
+- `self.prefix=[0]; self.power=[1]`：两个哨兵——空前缀哈希为 0，B^0=1。之后 prefix[k] 对应前 k 个字符，power[k]=B^k。
+- `(self.prefix[-1]*base+ord(c)+1)%mod`：前缀递推"旧哈希乘 B 再加新字符系数"。`ord(c)+1` 里的 +1 把字符映射到正整数，避免某个字符系数为 0 时出现"长短不同却同哈希"的退化。
+- `self.power.append(self.power[-1]*base%mod)`：同步扩幂表。
+- `query` 先做区间合法性检查（半开区间 [left,right)，要求 0≤left≤right≤n），再执行减法公式。Python 的 `%` 对负数也返回非负结果，所以即使减出负数也自动落回 [0, mod)。
+
+### 4.2 `find_duplicate_length(s, length, ...)`
+
+```python
+def find_duplicate_length(s,length,*,base=911382323,mod=1000000007):
+    if length<0: raise ValueError('nonnegative length required')
+    if length==0: return ''
+    if length>len(s): return None
+    rh=RollingHash(s,base,mod); buckets={}
+    for i in range(len(s)-length+1):
+        key=rh.query(i,i+length)
+        for j in buckets.get(key,[]):
+            if s[i:i+length]==s[j:j+length]: return s[i:i+length]
+        buckets.setdefault(key,[]).append(i)
+    return None
+```
+
+- 签名里的 `*`：它之后的关键字，调用时必须写名字（如 `mod=1`），防止位置参数传错——测试正是靠 `find_duplicate_length('abcd',2,base=1,mod=1)` 这样传退化参数的。
+- `if length<0: raise ... / if length==0: return '' / if length>len(s): return None`：三个边界——负长度非法；长度 0 视为平凡的重复（返回空串）；长度超过串长根本取不出子串。
+- `rh=RollingHash(s,base,mod); buckets={}`：一次预处理，桶用字典（key=哈希，value=起点列表）。
+- `key=rh.query(i,i+length)`：O(1) 拿到当前子串哈希。
+- `for j in buckets.get(key,[]):` 与 `if s[i:i+length]==s[j:j+length]`：**这就是精确复核**——哈希撞上了只说明"可疑"，逐个和桶里的候选做真正的字符串比较，确认了才返回。
+- `buckets.setdefault(key,[]).append(i)`：把自己也挂进桶，供后面的起点比较。
+- 扫完没发现重复返回 None。返回值是"重复子串本身或 None"，二分据此判断可行性。
+
+### 4.3 `longest_duplicate_substring(s)`
+
+```python
+def longest_duplicate_substring(s):
+    low,high=0,len(s); best=''
+    while low<=high:
+        mid=(low+high)//2; found=find_duplicate_length(s,mid)
+        if found is None: high=mid-1
+        else: best=found; low=mid+1
+    return best
+```
+
+- `low,high=0,len(s); best=''`：答案长度在 [0,n] 里找；best 初值空串——整个串没有任何重复时（如 'abcd'）返回 ''。
+- `if found is None: high=mid-1`：这个长度不可行，往短的方向找。注意 `is None` 的写法，避免把"找到空串"（length=0 时返回 ''）误当成失败。
+- `else: best=found; low=mid+1`：可行就记下子串、再试试更长的。
+- 循环收敛后 best 就是全局最长重复子串。
+
+## 五、为什么是对的？复杂度是多少？（说人话）
+
+**减法公式为什么成立？** P[r] 展开是 val(s[0])·B^(r−1) + … + val(s[r−1])·B^0；P[l]·B^(r−l) 展开是 val(s[0])·B^(r−1) + … + val(s[l−1])·B^(r−l)——恰好是 P[r] 的"前 l 项"。相减，前 l 项全部抵消，剩下 val(s[l])·B^(r−l−1) + … + val(s[r−1])，正是子串 s[l..r) 的多项式值。在模运算里做减法是安全的（模意义下加法逆元就是减法）。
+
+**为什么碰撞不会导致错误答案？** 我们的判定逻辑是"哈希相等 ⇒ 才进入候选 ⇒ 还必须字符串真的相等才下结论"。字符串真的相等必然哈希相等，所以真重复永远不会被漏掉（这叫必要条件过滤）；假重复（哈希相同但串不同）会被最后的 `==` 拦下。两头都堵死了，结论只可能因为碰撞多做一些无用比较（变慢），不可能出错。这也解释了 cell1 那句"哈希相等不是字符串相等的严格证明"——本章干脆不赌概率，直接复核。
+
+**二分为什么合法？** 如果长度 L 有重复（两个不同起点 i≠j 的子串相同），把两边各砍掉最后一个字符，得到长度 L−1 的两个子串仍相同、起点仍不同，所以 L−1 也重复。可行长度因此是从 0 一直连到最优解的前缀段，二分不会跳过答案。注意"起点不同"只要求 i≠j，两次出现可以重叠——'aaaa' 里 'aaa' 出现在 0 和 1，重叠两个字符，照样算。
+
+**复杂度（拿具体数字感受）：** 预处理 O(n)；单次 query 是固定次数的乘模运算，O(1)。二分 O(log n) 轮、每轮 n−L+1 次查询，通常无碰撞时总代价约 O(n log n)：n=3×10^4（LC1044 的规模）时约 30000×15≈45 万次查询，一瞬间完成。但要诚实：桶内精确比较最坏每次花 O(L) 个字符比较、桶又可能很大，保守最坏界是 O(n³ log n)（cell4 明说"不保证 n log n 最坏界"）。空间是 O(n)（prefix、power、桶）。最后记住：双哈希能把碰撞概率压到极低（两组 10^9 级模数下约 n²/10^18，n=10^5 时约 10^-8），但那是概率论证，固定的 base/mod 可以被针对性构造攻击，代替不了"分桶 + 原串精确比较"的确定性保证。
+
+## 六、测试用例在测什么
+
+```python
+assert longest_duplicate_substring('banana')=='ana'
+assert longest_duplicate_substring('aaaa')=='aaa'
+# 模1让所有哈希值碰撞，但精确版仍不误判。
+assert find_duplicate_length('abcd',2,base=1,mod=1) is None
+assert find_duplicate_length('abca',1,base=1,mod=1)=='a'
+```
+
+- 第 1 条：官方样例，第三节 3.3 已手算全程。
+- 第 2 条：重叠重复——'aaa' 出现在起点 0 和 1（共享两个字符），专测"允许重叠"的约定。
+- 第 3、4 条（注意 notebook 里那行中文注释"模1让所有哈希值碰撞，但精确版仍不误判"）：base=1、mod=1 是最极端的退化参数——所有哈希都等于 0，全部起点挤进同一个桶。此时 `'abcd'` 长度 2 的四个子串两两哈希"相等"，但精确比较把它们逐一区分，正确返回 None（没有真重复）；而 `'abca'` 长度 1 时 'a' 是货真价实的重复，照常找到。这两条断言把"碰撞只会变慢、不会变错"钉死在测试里。
+
+第 5 段是穷举对拍：对长度 0..6 的全部 127 个 a/b 串、每个长度 0..n，用列表切片 `[s[i:i+length] ...]` 加集合判重算出"是否存在重复"，与 `find_duplicate_length(s,length,base=1,mod=2)`（故意用只能取 0/1 两个值的小模数，碰撞满天飞）的布尔结果比对；同时验证 `longest_duplicate_substring` 的答案长度等于暴力算出的最优长度，且答案在 s 中确实出现 ≥2 次（`s.startswith(answer,i)` 计数，允许重叠）。小模数 + 穷举，等于在"碰撞最严重"的环境下把正确性整体过了一遍。
+
+## 七、练习思路提示
+
+- **练习 1（小模数主动制造碰撞）：** 提示——把 mod 调小（比如 2 或 1）并观察行为：答案不变，但桶变大、`==` 比较次数飙升。手算例：s='ab'、mod=1 时 'a' 和 'b' 的哈希同为 0，`find_duplicate_length('ab',1,base=1,mod=1)` 走进同一桶、精确比较后正确返回 None。你可以给实现加个计数器统计字符比较次数，对比 mod=10^9+7 和 mod=2 的差别，把"精确复核代价"量化出来。边界记得写：length=0、length>n、空串。
+- **练习 2（双哈希 vs 逐字复核）：** 提示——两条路线的取舍：双哈希用两组 (base, mod) 同时比对，预处理和查询都翻倍，换来碰撞概率乘上第二个 1/mod，但仍是"极小概率出错"；逐字复核每对候选多花 O(L) 字符比较，换来"绝不出错"。用数字感受概率：n=10^5 个子串两两配对约 5×10^9 对，单哈希 mod≈10^9 时期望碰撞约 5 次（并不安全！），双哈希约 5×10^-9。建议写一个故意构造的碰撞例子（小 mod 下很容易），分别验证两种策略的表现，再讨论什么场景选哪个（比赛时限紧、可重提交 vs 工程要求确定性）。
+
+## 八、对应 LeetCode 题目
+
+- **1044. Longest Duplicate Substring**：这就是 `longest_duplicate_substring` 的原题——练"前缀哈希 O(1) 查询 + 长度单调性二分 + 桶内精确复核"的全流程。
+- **187. Repeated DNA Sequences**：固定长度 10 的重复子串统计——相当于只调用一次 `find_duplicate_length(s, 10)` 并收集所有重复者，练的是"定长分桶"这一个环节（长度固定就不需要二分）。
+- **1316. Distinct Echo Substrings（extension）**：统计形如 A+A 的不同子串——是本章哈希比对的迁移扩展：用哈希判等去重、再按定义复核，把"滚动哈希当 O(1) 比较器"用在计数场景。

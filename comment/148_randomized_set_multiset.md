@@ -1,0 +1,153 @@
+# N148 · 随机集合与多重集合设计 —— 说人话详解
+
+> 对应 notebook：`notebooks/18_design/148_randomized_set_multiset.ipynb`
+
+## 一、这章要解决什么问题？（问题描述）
+
+我们要设计一个"超级集合"数据结构，它得同时满足三件事，而且每件都要快（平均 O(1)）：
+
+1. `insert(value)`：把一个值放进去，如果它已经存在就返回 `False`，否则放进去返回 `True`；
+2. `remove(value)`：把一个值删掉，如果它不存在就返回 `False`，否则删掉返回 `True`；
+3. `getRandom()`：等可能地返回集合里的某一个元素。
+
+为什么这事难？因为我们手头两种常见容器各有短板：Python 的 `list` 能 O(1) 按下标取值（这对随机取样很关键），但从中间删一个元素要把它后面所有元素前移，是 O(n)；Python 的 `set` 插入删除都是 O(1)，但它没有"第 i 个元素"的概念，没法做随机取样。所以单独用哪一个都做不到三个操作全 O(1)，必须把两者组合起来。
+
+举个具体到数字的例子（多重集合版本）：依次执行 `insert(1)`、`insert(1)`、`insert(2)`，内部数组变成 `[1, 1, 2]`。此时调用 `getRandom()`，返回 1 的概率是 2/3（下标 0 和下标 1 都是 1），返回 2 的概率是 1/3。为什么？因为实现是"先随机抽一个下标，再返回那个下标上的值"，三个下标被抽中的概率各是 1/3，其中两个下标放的是 1。这就是 cell4 里说的"概率正比于出现次数"。
+
+## 二、关键概念（定义）
+
+- **稠密数组（compact array）**：一个没有任何"空洞"的数组 `values`，每个下标上都躺着有效元素。我们需要它保持稠密，因为 `randrange(len(values))` 才能等可能地覆盖每一个元素实例。
+- **反向索引（`position` / `positions` 哈希表）**：从"值"反查"它在数组的哪个下标"。有了它，删除时我们才能一步跳到待删元素的槽位，不用从头到尾扫描数组。
+- **交换删除（swap-remove）**：删除下标 `i` 的元素时，不是把后面所有元素前移，而是把数组**最后一个元素**搬过来填住 `i` 号坑，然后砍掉尾巴。这样只有一个元素（被搬的那个）换了位置，我们只需要更新一条索引记录。
+- **多重集合（multiset）**：允许同一个值出现多次的集合。这时一个值对应**一组**下标而不是一个，所以反向索引的值从"单个下标"升级成"下标的集合 `set`"。
+- **均匀随机（uniform random）**：每个被抽的对象机会均等。注意区分"对元素实例均匀"（数组里每个格子等概率）和"对不同值均匀"（每种值等概率），两者在有多重复值时结果不同。
+- **可注入随机源（RNG 注入）**：构造函数接受一个 `rng` 参数，传 `None` 就新建一个 `Random()`，传了就用你的。这样做能让测试变得可复现——测试里塞一个"按顺序吐 0,1,2"的假随机数发生器，就能精确预言 `getRandom()` 的输出。
+- **参照物（reference model）**：测试里用一个朴素的 `set` 和一个 `Counter` 当"标准答案"，我们的花哨实现每一步都得和这个朴素模型对得上。
+
+## 三、解决思路（一步步推导）
+
+- **Step 1**：`getRandom` 要 O(1)，就得能 O(1) 地"按下标取值"，所以底层数据结构必须是一个数组 `values`。
+- **Step 2**：数组删中间元素是 O(n)，但我们不受这个限制：把最后一个元素搬进被删的坑里，再砍掉数组尾巴，删除就变成 O(1) 了。代价是"被搬的那个元素"换了下标。
+- **Step 3**：删除前我们得先知道"这个值在数组哪个下标"，所以再配一个哈希表 `position`，存"值 → 下标"。第 2 步搬动末项之后，顺手把哈希表里末项的下标改成新位置。
+- **Step 4**：`insert` 就是往数组尾巴 `append`，同时记录 `position[value] = 新下标`。
+- **Step 5**：`getRandom` 就是 `values[randrange(len(values))]`，数组稠密时这就是均匀抽样。
+- **Step 6**：升级成多重集合时，`positions[value]` 变成一个下标集合 `set`；删除时从这个集合里随便弹出**一个**下标（删的是该值的"一次出现"，不是全部）。这里最容易踩两个坑：被搬来的末项恰好和被删的值相同（同一个哈希键）；被删的坑恰好就是最后一个槽位（搬无可搬）。代码里"先 add 新下标、再 discard 旧下标"的顺序就是为了让这两种情况自然处理对。
+
+**手算演示**（这就是 cell6 里 `show_table` 生成的那张表的来历，操作序列是 `insert 1, insert 1, insert 2, remove 1, remove 2`；集合的 `pop()` 弹出哪个下标在语言规范里是"任意"的，对小整数集合通常弹到较小的那个，下面按弹到 0 来演）：
+
+| 操作 | 值 | 返回 | 数组 values | 索引集合 positions |
+|---|---|---|---|---|
+| insert | 1 | True（首次出现） | `[1]` | `{1: {0}}` |
+| insert | 1 | False（已存在） | `[1, 1]` | `{1: {0, 1}}` |
+| insert | 2 | True（首次出现） | `[1, 1, 2]` | `{1: {0, 1}, 2: {2}}` |
+| remove | 1 | True | `[2, 1]` | `{1: {1}, 2: {0}}` |
+| remove | 2 | True | `[1]` | `{1: {0}}` |
+
+逐行看两张删除是怎么发生的：
+
+- `remove(1)`：从 `positions[1] = {0,1}` 弹出下标 0。末项是 `values[2] = 2`。把 2 写进 0 号坑，数组变 `[2, 1, 2]`；把 2 的索引集合改成 `{0}`（加 0、去掉旧的 2），然后砍掉尾巴得 `[2, 1]`。1 还剩一次出现，所以 `positions[1] = {1}` 保留。
+- `remove(2)`：从 `positions[2] = {0}` 弹出下标 0。末项是 `values[1] = 1`。把 1 写进 0 号坑，1 的索引集合加 0 去 1，得 `{0}`；砍掉尾巴后数组是 `[1]`。2 的一次出现删光了，所以把键 2 从 `positions` 里整个删掉。
+
+## 四、代码逐段讲解
+
+### 4.1 RandomizedSet（不允许重复）
+
+先贴 cell3 里的真实代码：
+
+```python
+from random import Random
+
+class RandomizedSet:
+    def __init__(self,rng=None): self.values=[]; self.position={}; self.rng=Random() if rng is None else rng
+    def insert(self,value):
+        if value in self.position: return False
+        self.position[value]=len(self.values); self.values.append(value); return True
+    def remove(self,value):
+        if value not in self.position: return False
+        index=self.position.pop(value); last=self.values.pop()
+        if index<len(self.values): self.values[index]=last; self.position[last]=index
+        return True
+    def getRandom(self):
+        if not self.values: raise IndexError('empty randomized set')
+        return self.values[self.rng.randrange(len(self.values))]
+```
+
+- `__init__` 里用分号把三句话挤在一行：建空数组 `values`、建空哈希表 `position`、准备随机源。`Random() if rng is None else rng` 是条件表达式——调用者没给随机源就自己新建一个，给了就用调用者的，这让测试可以塞假随机源进来。
+- `insert`：先用 `if value in self.position: return False` 这种单行判断挡掉重复值（集合语义：已存在就拒绝）。`len(self.values)` 正好是新元素将要落位的下标（append 之前的长度就是最后一个下标加一），先记进哈希表再 `append`，两步配合让 `position[value]` 始终指向 `values` 里 value 的位置。
+- `remove`：`self.position.pop(value)` 一石二鸟——删掉这条映射的同时把下标取出来。接着 `last=self.values.pop()` 把数组尾巴砍下来拿在手里。关键在 `if index<len(self.values)`：注意此刻数组已经 pop 过了，长度变短，所以这个条件真正问的是"被删的坑是不是原来的最后一个槽位"。如果不是（坑在中间），就把手里的 `last` 填进坑 `self.values[index]=last`，并把 `last` 的映射改成新下标；如果是尾巴，那 `last` 就是被删的那个值自己，直接扔掉即可，什么都不用补。紧凑写法省掉的正是这个分支叙述。
+- `getRandom`：空数组时主动 `raise IndexError`，不返回 `None` 之类的默认值去掩盖非法调用；正常情况就是 `randrange(len)` 抽下标再取值，因为数组稠密，每个实例被抽中概率都是 `1/len`。
+
+### 4.2 RandomizedCollection（允许重复）
+
+```python
+class RandomizedCollection:
+    def __init__(self,rng=None): self.values=[]; self.positions={}; self.rng=Random() if rng is None else rng
+    def insert(self,value):
+        first=value not in self.positions
+        self.positions.setdefault(value,set()).add(len(self.values)); self.values.append(value); return first
+    def remove(self,value):
+        if value not in self.positions: return False
+        index=self.positions[value].pop(); last=self.values[-1]; last_index=len(self.values)-1
+        self.values[index]=last; self.positions[last].add(index); self.positions[last].discard(last_index); self.values.pop()
+        if not self.positions[value]: del self.positions[value]
+        return True
+    def getRandom(self):
+        if not self.values: raise IndexError('empty randomized collection')
+        return self.values[self.rng.randrange(len(self.values))]
+```
+
+- `insert`：`first=value not in self.positions` 先记下"这是不是该值的第一次出现"，因为下一步 `setdefault(value,set())` 会把这个键建出来，之后再判断就永远为真了——先存后改是这类代码的常见套路。`setdefault` 的意思是"键不存在就先放入一个空集合，然后返回这个集合"，紧接着 `add(新下标)` 再 `append`。返回 `first`：第一次出现返回 `True`，重复插入返回 `False`，但**值本身还是会被存进去**（多重集合嘛）。
+- `remove`：`self.positions[value].pop()` 从下标集合里弹出任意一个下标——只删"一次出现"，不是删掉这个值全部。接着取 `last=values[-1]` 和它的下标 `last_index`。然后是本章最密的四连：`values[index]=last`（末项填坑）→ `positions[last].add(index)`（末项登记新下标）→ `positions[last].discard(last_index)`（末项注销旧下标）→ `values.pop()`（砍尾巴）。这个"先加新、再删旧"的顺序专门对付两种坑：其一，`last` 恰好等于 `value`（比如从 `[1,1]` 里删一个 1，搬来的末项也是 1），此时 `add` 和 `discard` 作用在同一个集合上，先加后删不会把新下标误删；其二，`index` 恰好等于 `last_index`（删的就是尾巴本身），此时 add 和 discard 抵消，集合净效果就是弹掉这个下标。最后 `if not self.positions[value]: del self.positions[value]` 把已经删空的键清掉，让"值在不在结构里"始终等价于"键在不在 `positions` 里"。
+- `getRandom`：与 `RandomizedSet` 完全同理，抽的是"格子"，所以值被抽中的概率等于它的出现次数除以总元素数。
+
+## 五、为什么是对的？复杂度是多少？（说人话）
+
+**为什么删除不会弄乱数据？** 交换删除只动了一个还留在结构里的元素——被搬的末项，所以我们只需要改它那一条索引记录；其他所有元素的下标原封不动，它们的索引自然也全对。反过来，如果删除时把后面元素逐个前移，那每个被移动元素的索引都得改，就退化成 O(n) 了。
+
+**为什么 getRandom 是"公平"的？** 数组从头到尾没有空洞，长度是 `n` 时 `randrange(n)` 给出 0 到 n-1 每个下标的概率严格相等，而"返回某个值"的概率 = "抽中放它的那些格子"的概率 = 它的出现次数 / n。所以在 `[1,1,2]` 里，P(返回 1) = 2/3、P(返回 2) = 1/3——公平是对"格子"公平，不是对"不同的值"公平。
+
+**为什么 `insert` 里"先记下标、再 append"顺序不能反？** `self.position[value]=len(self.values)` 这句执行时数组还没 append，所以 `len(values)` 恰好是元素**将要**落位的下标。如果反过来先 append 再用 `len(values)-1` 倒也能写对，但容易差一；本章选的写法把"新位置 = 追加前的长度"这个事实用得干干净净。你可以拿 `insert(2)` 到空集合演一遍：执行前 `values=[]`、`len=0`，记 `position[2]=0`，append 后 `values=[2]`——下标准确落在 0 上。
+
+**边界情况靠什么兜住？** 靠 `remove` 里那几步的书写顺序：先从集合弹下标、先加新下标再注销旧下标、砍完尾巴再检查集合是否已空。这一套顺序让"末项与被删值相同""被删的就是最后一个槽位""删光了最后一次出现"三种棘手情形不需要任何专门的 if 分支就自然算对（你可以拿第三节的 `remove(2)` 那一步对照验证）。
+
+**复杂度是多少？** 插入、删除、随机取样每一步只做：哈希表查/改一次或几次、集合加/删常数次、数组尾操作一次——都是平均常数时间，所以三个操作都是平均/均摊 O(1)。拿具体数字感受一下：数组里存 1,000,000 个元素时，`list.remove(x)` 最坏要挪约 1,000,000 个元素，而交换删除只是"改一个格子 + 砍尾巴"，无论存多少元素步骤数都差不多。空间上数组存一份、索引集合存一份，总量和元素实例数成正比，即 O(元素实例数)。另外 `getRandom` 在空结构上会抛 `IndexError`——这是故意的：空集合上"随机取一个"没有合理答案，报错比悄悄返回默认值诚实。
+
+## 六、测试用例在测什么
+
+cell8 的测试分两大块。
+
+**第一块：1200 轮随机对拍。** 每一轮随机挑一个 0–9 的数 `x`，再随机决定执行插入还是删除，同时维护一个朴素 `set`（叫 `ref`）和一个 `Counter`（叫 `multiset`）当标准答案。用"真随机数 + 朴素参照物"的组合，1200 轮下来插入、删除、重复插入、删不存在值、删到空再插回来这些情形都会被反复覆盖，比手写几十条固定用例覆盖面广得多。逐条看断言：
+
+- `assert a.insert(x)==(x not in ref)`：测插入的返回值语义——`ref` 里没有 `x` 时插入必须返回 `True`，有则必须返回 `False`。这测的是正常行为。
+- `assert b.insert(x)==(multiset[x]==0)`：多重集合版本的对应契约，第一次出现返回 `True`，之后返回 `False`。
+- `assert a.remove(x)==(x in ref)` 和 `assert b.remove(x)==(multiset[x]>0)`：测删除的返回值——元素存在才能成功。注意 `x` 可能根本没插进去过，这就自动覆盖了"删除不存在的值返回 `False`"的边界。
+- `assert set(a.values)==ref and len(a.values)==len(ref)`：测内部数组的内容和大小与标准答案一致，专抓"删错元素"或"漏删"。
+- `assert a.position=={x:i for i,x in enumerate(a.values)}`：现算一份"数组应有的完整索引表"和实现里的 `position` 全量比对，专抓"搬完末项忘了改索引"这类错位——这是交换删除最容易写错的地方。
+- `assert Counter(b.values)==multiset` 和 `assert b.positions=={x:{...} for x in multiset}`：多重集合版本的同样两组全量比对，把每个值的下标集合逐个核对。
+- `assert a.getRandom() in ref`（结构非空时）：测随机取样的"成员性"——不管抽到哪个都必须是当前在集合里的值。
+
+**第二块：确定性随机源测试（`Tickets` 类）。** `Tickets` 是个假随机源：`randrange(n)` 无视参数 `n`，第一次调用返回 0，第二次返回 1，第三次返回 2。先插入 `[1,1,2]` 使数组为 `[1,1,2]`，再连续调三次 `getRandom()`，按假随机源的行为三次分别取 `values[0]、values[1]、values[2]`，也就是 1、1、2。于是：
+
+```python
+assert Counter(b.getRandom() for _ in range(3))==Counter({1:2,2:1})
+```
+
+这条断言用一个完全确定的序列验证了"出现两次的 1 被抽中两次、出现一次的 2 被抽中一次"，也就是概率正比于出现次数——把随机问题变成了可精确预言的确定问题，这是随机逻辑测试的经典技巧。三次调用逐格对账：
+
+| 调用序号 | Tickets.randrange 返回 | 实际抽中的数组下标 | 数组 `[1,1,2]` 中该下标的值 |
+|---|---|---|---|
+| 第 1 次 | 0 | 0 | 1 |
+| 第 2 次 | 1 | 1 | 1 |
+| 第 3 次 | 2 | 2 | 2 |
+
+三次合计 1 出现两次、2 出现一次，正好等于它们在数组里的格子占比。
+
+## 七、练习思路提示
+
+- **练习 1（按不同值均匀 vs 按出现次数均匀）**：提示——拿 `[1,1,2]` 当例子，先手算两种口径的概率：按"不同值均匀"是 P(1)=1/2、P(2)=1/2；按"出现次数均匀"（本章实现）是 P(1)=2/3、P(2)=1/3。验证思路有两条：要么像 `Tickets` 那样塞一个确定随机源精确数格子，要么跑足够多次（比如 30 万次）用频率逼近概率，看 1 被抽中的频率是否贴近 2/3 而不是 1/2。别忘了写清楚边界：只有一个值、值出现零次时会怎样。
+- **练习 2（随机数源作为参数注入）**：提示——回想构造函数里 `rng=None` 加 `Random() if rng is None else rng` 的写法，练习就是让你自己复刻这个模式并说明它换来了什么：可复现的测试、能对"抽到哪个下标"做精确断言。你可以自己写一个"永远返回固定下标"或"按列表顺序吐数"的桩类，先在纸上预言每次 `getRandom()` 的返回值，再运行对照。注意边界：桩对象的 `randrange` 要能对任意 `n` 给出 0 ≤ 返回值 < n 的数（`Tickets` 之所以能偷懒是因为它只被小数组用到）。
+
+## 八、对应 LeetCode 题目
+
+- **380. Insert Delete GetRandom O(1)**：就是本章 `RandomizedSet` 的原题——练"数组 + 反向索引 + 交换删除"这套组合拳本身。
+- **381. Insert Delete GetRandom O(1) - Duplicates allowed**：对应 `RandomizedCollection`——在 380 的基础上加"一个值对应一组下标"的集合索引，重点练同值末项、删空键这几个边界的处理顺序。

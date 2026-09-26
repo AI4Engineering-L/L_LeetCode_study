@@ -1,0 +1,197 @@
+# N144 · 状态图、双向BFS与A* —— 说人话详解
+
+> 对应 notebook：`notebooks/17_advanced_algorithms/144_state_graph_bidirectional_astar.ipynb`
+
+## 一、这章要解决什么问题？（问题描述）
+
+有一大类的本质是："给你一个初始局面和一个目标局面，每一步只能做某种固定操作，问最少几步能到位。" 这类题的统一解法是**把操作看成边**：每个完整局面（状态）是图上一个顶点，一次合法操作就是一条权为 1 的边，"最短操作序列" = 状态图上的最短路径。本章用三个经典题把这个思想走通：
+
+1. **开锁**：四位转盘锁 '0000'，每步可把任意一位转盘 +1 或 −1，问最少几步转到目标。cell6 例子：从 '0000' 到 '0009'，输出 1。为什么是 1？转盘是模 10 循环的，'0000' 最后一位 **−1**（代码里 `(0-1)%10=9`）一步就得到 '0009'，不用加 9 次。
+2. **数字华容道**：2×3 棋盘上 0 是空格，每步空格与相邻数字交换。cell6 例子：起始 `[[1,2,3],[4,0,5]]` 到目标 `[[1,2,3],[4,5,0]]`，输出 1——空格和 5 换一下就完事。
+3. **访问所有点的最短路**：n 个点的图上走，要求每个点至少被经过一次，求最短步数。测试例子：星形图（中心 0 连着叶子 1、2、3），输出 4，因为最优走法是 1→0→2→0→3，恰好 4 步。
+
+这些状态空间大得存不下整个图（华容道 2×3 有 720 个排列、3×3 有 36 万个），所以搜索时"要一个邻居现算一个"，并且要用双向 BFS 或 A* 来省时间。
+
+## 二、关键概念（定义）
+
+- **状态编码（state encoding）**：把一个完整局面压成可哈希的东西当顶点用。锁直接用 4 字符字符串；华容道用展平的 6 元组 `(1,2,3,4,0,5)`；访问全点问题用 `(当前所在点, 已访问集合的位掩码)` 二元组。
+- **位掩码（bitmask）**：用一个整数的第 i 位是 1/0 表示"点 i 已访问/未访问"。n 个点的所有访问情况共 2^n 种，配合当前所在点，状态总数至多 n·2^n。
+- **单位权 BFS**：所有边权都是 1 时，BFS 按"离起点的距离"一层一层发现状态，所以一个状态第一次入队时的步数就是最短步数。
+- **双向搜索（bidirectional search）**：从起点和终点同时各做 BFS，在中间会合。为什么快？设答案长 L，单向要摸完半径 L 的球（约 b^L 个状态），双向只摸两个半径 L/2 的球（约 2·b^(L/2)），指数直接减半。
+- **按整层扩展 + 上下界**：cell1 强调双向搜索**不能**"两队列一碰头就返回"（那样可能错过更短的会合点）。本章的实现是：整层整层地扩，维护 `best`（目前发现的会合路径长，上界）和两侧已扩深度 `depth`（未发现部分的长度的下界），当"下界追上上界"时才能确定 best 就是最优。
+- **A\***：Dijkstra 的"聪明版"。每个状态记 g = 走到这已花的步数，h = 从这到目标的**估计**剩余步数，堆按 f = g + h 出队。h 越准，越早直奔目标，少摸无关状态。
+- **admissible（可采纳）/ consistent（一致）**：h"永不高估真实剩余步数"叫可采纳；"任一条边两端 h 的下降不超过边权 1"叫一致（一致性蕴含可采纳）。满足其一，A* 弹出目标时的 g 就是最优。本章的曼哈顿距离启发式两者都满足。
+- **过期状态（stale entry）与重开节点**：一个状态可能以更差的 g 先进堆、后来又以更小的 g 再次进堆。弹出时发现 `g != distance[u]` 就说明这条堆记录已过时，直接跳过。这叫过期项过滤；练习 2 会讨论 h 不一致时为什么连这个都不能随便省。
+
+## 三、解决思路（一步步推导）
+
+**Step 1：把局面变成顶点、操作变成边。** 锁的 neighbors：枚举 4 位中的每一位 i 和方向 ±1，产出新字符串 `s[:i]+str((int(c)+delta)%10)+s[i+1:]`——每个状态恰好 8 个邻居，模 10 保证 0 和 9 相邻。
+
+**Step 2：会合判据要严谨（双向）。** 以 `open_lock([],'0009')` 想象：正反向各自扩层。正确做法是每一层扩完后，检查"本层每个点/每个新邻居是否已被对侧记录"，每发现一次会合就用两侧距离之和更新 best；但**先别返回**，继续扩到"两侧深度之和 ≥ best"才收工，因为可能还有更短的会合在没扫到的地带。
+
+**Step 3：A\* 的手算演示**，用 cell6 的例子 `start=(1,2,3,4,0,5), goal=(1,2,3,4,5,0)`。启发式 = 每个非零数字当前位置到目标位置的"行差 + 列差"（曼哈顿距离）之和，空格 0 不计入。start 的 h：只有 5 不在位——5 现在在下排第 3 格（坐标 (1,2)），目标是下排第 2 格 (1,1)，差 1；所以 h=1。流程：
+
+- 初始堆：(f=1, g=0, start)。弹出 start，不是目标，展开它的三个邻居（`_puzzle_neighbors` 按下、上、右、左顺序给出）：(1,0,3,4,2,5)、(1,2,3,4,5,0)、(1,2,3,0,4,5)，各 g=1。
+- 目标 (1,2,3,4,5,0) 的 h=0，f=1+0=1，是堆里最小的（另两个邻居 h：前者 5 和 2 各差 1 → h=2、f=3；后者 h=2、f=3），所以下一个弹出它。
+- **弹出时**（不是入堆时）发现 u==goal，返回 g=1。✓
+
+这正对应 cell6 表格：start 距目标 1 步；三个邻居 (1,0,3,4,2,5)、(1,2,3,4,5,0)、(1,2,3,0,4,5) 分别距目标 2、0、2 步——你可以拿纸笔验证 (1,2,3,0,4,5) 走"4 右移、5 左移"两步到目标，没有 1 步的走法。
+
+**Step 4：访问全点问题的手算演示**（测试里的星形图，中心 0 连 1、2、3）。状态是 (所在点, 掩码)。起始队列装 (0,0001)、(1,0010)、(2,0100)、(3,1000)。BFS 一层层走：第 1 层出现 (1,0011)、(0,0011) 等；第 2 层出现 (2,0111)、(1,0111) 等（掩码里已含 2 个叶子）；第 3 层的 (0,0111) 出队后，尝试邻居 3，新掩码 1111 已是全集，返回 3+1=**4**。直观理解：从叶子 1 出发，1→0→2→0→3，每个叶子都要"进中心再出来"，4 步是极限。
+
+## 四、代码逐段讲解
+
+### 核心助手：`_bidirectional_distance(start, goal, neighbors, blocked)`
+
+```python
+    if start in blocked or goal in blocked: return -1
+    if start==goal: return 0
+    front=[{start},{goal}]; distance=[{start:0},{goal:0}]; depth=[0,0]; best=float('inf')
+```
+
+起点或终点本身是死锁状态直接 −1；起点等于终点是 0。front[0]/front[1] 是两侧"当前待扩的一整层"；distance[side] 记该侧已见状态到该侧源点的距离；depth[side] 是该侧已扩完的层数；best 记目前最好的会合长度（上界）。
+
+```python
+    while front[0] and front[1]:
+        side=0 if len(front[0])<=len(front[1]) else 1; other=side^1; nxt=set()
+```
+
+每轮挑**层更小的一侧**来扩（两边工作量均衡，这是常见启发式）。`other=side^1` 用异或在 0/1 之间切换。
+
+```python
+        for u in front[side]:
+            if u in distance[other]: best=min(best,distance[side][u]+distance[other][u])
+            for v in neighbors(u):
+                if v in blocked: continue
+                value=distance[side][u]+1
+                if v in distance[other]: best=min(best,value+distance[other][v])
+                if v not in distance[side]: distance[side][v]=value; nxt.add(v)
+```
+
+对层内每个 u：u 若已被对侧摸到，"本侧到 u + 对侧到 u"就是一条完整路径，更新 best。对每个邻居 v 同理再查一次对侧记录（会合点可能是 v 而不是 u）；v 对本侧是新状态才登记并放入下一层。
+
+```python
+        front[side]=nxt; depth[side]+=1
+        if best<float('inf') and depth[0]+depth[1]>=best: return best
+    return -1 if best==float('inf') else best
+```
+
+换层、该侧深度 +1。停止条件是本章的灵魂：两侧分别把半径 depth[0]、depth[1] 以内的状态**全部**扩完了，任何还没被发现的会合路径必然要走出这两个半径，长度至少 depth[0]+depth[1]；既然这个下界已追上 best，best 就是最优。若一侧层空（搜索空间耗尽）还没会合，说明不连通，返回 −1。
+
+### 函数一：`open_lock(deadends, target)`
+
+```python
+def open_lock(deadends,target):
+    if len(target)!=4 or any(c not in '0123456789' for c in target): raise ValueError('four decimal digits required')
+    def neighbors(s):
+        for i,c in enumerate(s):
+            for delta in (-1,1): yield s[:i]+str((int(c)+delta)%10)+s[i+1:]
+    return _bidirectional_distance('0000',target,neighbors,set(deadends))
+```
+
+先挡非法目标（不是 4 位十进制就报错）。neighbors 是生成器：对 4 位中每一位各试 +1 和 −1，`%10` 实现 9→0 的环绕——这就是为什么 '0009' 一步可达。最后把死锁集合作为 blocked 交给双向搜索。
+
+### 助手：`_puzzle_neighbors(state, cols=3)`
+
+```python
+    zero=state.index(0); rows=len(state)//cols; r,c=divmod(zero,cols)
+    for x,y in [(r+1,c),(r-1,c),(r,c+1),(r,c-1)]:
+        if 0<=x<rows and 0<=y<cols:
+            pos=x*cols+y; out=list(state); out[zero],out[pos]=out[pos],out[zero]; yield tuple(out)
+```
+
+找空格 0 的下标，换算成 (行,列)；试四个方向，出界的丢弃；合法方向就把 0 和那个位置的数字对调，产出新元组。2×3 和 3×3 棋盘都是 3 列，所以 cols=3 通吃。
+
+### 函数二：`sliding_puzzle(board)`
+
+```python
+def sliding_puzzle(board):
+    if len(board)!=2 or any(len(row)!=3 for row in board): raise ValueError('2x3 board required')
+    start=tuple(x for row in board for x in row)
+    if sorted(start)!=list(range(6)): raise ValueError('tiles must be 0..5 exactly once')
+    return _bidirectional_distance(start,(1,2,3,4,5,0),_puzzle_neighbors)
+```
+
+校验形状和棋子（必须是 0..5 各一次），把二维盘面展平成一维元组，目标是 `(1,2,3,4,5,0)`（空格在最后），交给双向搜索。
+
+### 函数三：`shortest_path_all_nodes(graph)`
+
+```python
+    full=(1<<n)-1; q=deque((i,1<<i,0) for i in range(n)); seen={(i,1<<i) for i in range(n)}
+```
+
+`full` 是全 1 掩码（全部访问）。初始状态：从每个点 i 出发、掩码只含 i、0 步。注意题目允许从任意点出发，所以 n 个起点同时入队。
+
+```python
+    while q:
+        u,mask,steps=q.popleft()
+        for v in graph[u]:
+            new=mask|1<<v
+            if new==full: return steps+1
+            if (v,new) not in seen: seen.add((v,new)); q.append((v,new,steps+1))
+    return -1
+```
+
+走到邻居 v 时掩码"或"上 v 那一位；掩码变 full 就到头了，返回 steps+1。seen 按 (点,掩码) 去重——同一个点在不同访问集合下是**不同状态**，这是本题的关键。队列耗尽还没凑满就返回 −1（图不连通）。`n<=1` 时 0 步直接返回。
+
+### 函数四：`astar_puzzle(start, goal)`
+
+```python
+    if len(start) not in (6,9) or sorted(start)!=list(range(len(start))) or sorted(goal)!=sorted(start): raise ValueError('matching 2x3 or 3x3 permutations required')
+    positions={x:divmod(i,3) for i,x in enumerate(goal)}
+```
+
+校验：6 或 9 个格子、0..n−1 恰好各一次、start 和 goal 是同一组数字。positions 记录每个数字在目标里的 (行,列)，供启发式查表。
+
+```python
+    def heuristic(state):
+        return sum(abs(i//3-positions[x][0])+abs(i%3-positions[x][1]) for i,x in enumerate(state) if x)
+```
+
+曼哈顿距离和，`if x` 跳过空格（空格不算"要归位的数字"）。
+
+```python
+    distance={start:0}; heap=[(heuristic(start),0,start)]
+    while heap:
+        bound,g,u=heappop(heap)
+        if g!=distance[u]: continue
+        if u==goal: return g
+        for v in _puzzle_neighbors(u):
+            candidate=g+1
+            if candidate<distance.get(v,float('inf')):
+                distance[v]=candidate; heappush(heap,(candidate+heuristic(v),candidate,v))
+    return -1
+```
+
+堆按 (f=g+h, g, 状态) 排。弹出时先 `g!=distance[u]` 过滤过期记录（该状态后来用更小的 g 重新入堆了，旧记录作废）；**在弹出时**判目标并返回 g——cell1 强调"目标首次入堆不代表最优，应在合法最小优先级弹出时终止"。松弛条件 `candidate<distance.get(v,inf)` 只在找到更短 g 时更新并重推（这就是"重开节点"的入口）。这些保证只有在 h 可采纳时才敢这么省事，练习 2 会反例说明。
+
+## 五、为什么是对的？复杂度是多少？（说人话）
+
+**为什么双向搜索不会答错？** 想象答案长度是 L 的路径，它的中点离起点 L/2、离终点 L/2。两侧按层扩，任何时刻"没被扩到的地方"离两侧源点至少还有 depth[0]、depth[1] 步，所以尚未被发现的任何会合路径长度至少是 depth[0]+depth[1]。我们只有在"这个下界已经追平目前找到的 best"时才返回，所以 best 一定不劣于所有未发现的路径——它就是最短。反过来如果"两队列一碰头就返回"，碰到的可能是一条绕远的会合，短的那条还没被两侧同时覆盖，就答错了。
+
+**为什么曼哈顿距离不高估？** 华容道每走一步，实际效果是"某个数字挪了一格"（空格换来换去只相当于一个数字位移一格）。一个数字想从当前位置到目标位置，直线距离（行差+列差）是它至少要走的步数，把所有数字的这个下界加起来，当然不超过真实总步数。而且每一步至多让这个总和降 1，恰好等于边权 1，这就是一致性成立的原因。有了这两条性质，A* 每次弹出的状态第一次拿到最优 g，目标弹出即可返回。
+
+**复杂度，代入数字感受一下：** 单位权 BFS 是 O(V+E)（V、E 是**可达状态**数和操作边数，不是棋盘格子数），A* 是 O((V+E)log V)。开锁的状态是 10⁴，宽搜全图也只是一万级；访问全点问题状态至多 n·2^n——n=13 时约 13×8192≈10 万，BFS 秒级；n=20 时约 2000 万，就很吃力了，这题的约束通常就卡在 n≤12~15。华容道 3×3 有 9!/2≈18 万个可达状态（另一半排列不可达），A* 配合曼哈顿启发式一般只摸几千个状态就到目标。双向搜索把指数砍半：分支因子 b=8 的锁，答案长 8 时单向约 8⁸≈1600 万，双向约 2×8⁴≈8000，差了三个数量级。最后注意 cell4 的前提：双向助手假设操作**无向可逆**（+1 的逆是 −1，交换的逆是再交换）；如果是有向图，反向那一侧必须用反图的邻居函数。
+
+## 六、测试用例在测什么
+
+- `assert open_lock(['0000'],'0000')==-1`：起点本身是死锁。边界值。
+- `assert open_lock([],'0000')==0 and open_lock([],'0009')==1`：起点即目标（0 步）；以及转盘环绕的特例（−1 一步到 0009）。后者专测 `%10` 语义。
+- `assert open_lock(['0201','0101','0102','1212','2002'],'0202')==6`：LeetCode 752 的官方样例，正常值，同时覆盖"死锁挡路需绕行"的场景。
+- `assert sliding_puzzle([[1,2,3],[5,4,0]])==-1`：4、5 互换的盘面在数学上不可解（逆序奇偶性不对），返回 −1。特殊值：测"不可达"分支，而不是报错。
+- `assert shortest_path_all_nodes([[1,2,3],[0],[0],[0]])==4`：星形图，第三节手算过。正常值。
+- `assert shortest_path_all_nodes([[],[]])==-1`：两个孤立点，永不连通。极小边界。
+- 华容道全排列真值段：从目标 `(1,2,3,4,5,0)` 做一次完整反向 BFS，得到全部 720 个 2×3 排列各自的真实最短步数（不可达为 −1）；然后对 `itertools.permutations(range(6))` 的**每一个**排列，断言 `sliding_puzzle` 和 `astar_puzzle` 都与真值一致。这是穷尽测试——不是抽样，是全部 720 个。
+- 随机图对拍段：100 轮，8 个点的随机无向图（每对点以 1/4 概率连边），对每对 (s,t) 用普通 BFS 算单源距离当标准答案，核对 `_bidirectional_distance` 全部一致。这专门检验双向搜索的层扩展和停止条件在各种奇形怪状的图上都不出错。
+
+## 七、练习思路提示
+
+**练习 1（位掩码表达已访问集合）：** 提示：你已经见过 `shortest_path_all_nodes` 的 (点, 掩码) 状态设计了。自己再写一遍时想清楚三件事：初始状态有哪些（每个起点一个，还是只有 0 号点）？`mask|1<<v` 何时会触发"完成"判定？seen 为什么必须按 (点, 掩码) 二元组去重而不能只按点去重（想想 1→0→2 和 1→0→3 之后回到 0 的掩码差异）？边界至少测 n=1、不连通图、自环输入。
+
+**练习 2（不一致启发式与重开节点）：** 提示：构造一个小图（三四个点就够），故意给某个中间点一个**虚高**的 h（比如远超真实剩余距离），让 A* 先弹出到目标的次优记录。观察两件事：如果保留"弹出时 g!=distance[u] 就跳过"的过滤但 h 一致性被破坏，返回值可能比真值大；要修对，就得允许一个状态即使已被扩展过、发现更小 g 时也重新入堆扩展（即"重开"）。写清楚你的修改版在什么条件下仍正确、代价是什么（最坏退化为 Dijkstra 层面的重复扩展）。
+
+## 八、对应 LeetCode 题目
+
+- **752. Open the Lock（打开转盘锁）**：`open_lock` 的原题，练的是"字符串状态 + 模 10 环绕邻居 + 死锁 blocked 过滤"这套状态图建模，双向 BFS 是标配优化。
+- **773. Sliding Puzzle（滑动谜题）**：`sliding_puzzle` 的原题（2×3 版本），练的是展平元组编码、空格邻居生成，以及"一半排列不可达返回 −1"的细节。
+- **847. Shortest Path Visiting All Nodes（访问所有节点的最短路径）**：`shortest_path_all_nodes` 的原题，练的是本章的位掩码状态设计——把"访问历史"编进状态里，让 BFS 照常工作。

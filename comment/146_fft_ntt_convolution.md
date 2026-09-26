@@ -1,0 +1,199 @@
+# N146 · FFT、NTT与卷积拓展 —— 说人话详解
+
+> 对应 notebook：`notebooks/17_advanced_algorithms/146_fft_ntt_convolution.ipynb`
+
+## 一、这章要解决什么问题？（问题描述）
+
+核心问题是**卷积**：给定序列 a、b，要算 c[k] = Σ a[i]·b[k−i]，也就是多项式乘法的系数。具体到数字（cell6 和 cell8 都用的例子）：a=[1,2]（代表多项式 1+2x），b=[3,4]（代表 3+4x），输入这两个系数列表 → 输出 [3, 10, 8]。为什么？因为 (1+2x)(3+4x) = 3 + 4x + 6x + 8x² = 3 + 10x + 8x²：x⁰ 系数 1×3=3，x¹ 系数 1×4+2×3=10，x² 系数 2×4=8。
+
+按定义双重循环算卷积是 O(n·m)，序列各长 10⁵ 时就是 10¹⁰ 次乘法，跑不动。FFT（快速傅里叶变换）把它降到 O(N log N)。但 FFT 用的是浮点复数，结果带舍入误差；NTT（数论变换）把同一套蝶形结构搬进"模素数 p 的整数世界"，结果是**精确的**（模 p 意义下）。本章把两条路都实现一遍，并时刻提醒你：浮点的"看起来是整数"不等于"任意大整数都正确"，这是 cell0 目标里"区分浮点与模域结果"的含义。
+
+## 二、关键概念（定义）
+
+- **卷积（convolution）**：c[k] = Σ_i a[i]·b[k−i]。换语言说：所有"下标加起来等于 k"的配对乘积之和。它就是多项式乘法，也是大整数竖式乘法（把数字当系数），还是"所有组合方式的计数"。
+- **DFT（离散傅里叶变换）**：把长度为 N 的系数序列变成"多项式在 N 个单位根上的取值"（点值表示）。点值表示的好处：两个多项式相乘，只需**对应点相乘**，N 次乘法搞定，不用卷积。
+- **单位根**：满足 ω^N = 1 的复数（复平面上把圆周 N 等分的点）。本章前向变换用 ω = e^(−2πi/N)。
+- **FFT（快速傅里叶变换）**：计算 DFT 的快速算法。核心观察：把序列按下标奇偶拆成两半，两个半长 DFT 可以拼出全长 DFT（因为 ω_N^(2k) = ω_(N/2)^k，且 ω_N^(k+N/2) = −ω_N^k）；递归拆下去就是 O(N log N)。
+- **蝶形（butterfly）**：迭代版 FFT 的基本动作：`u = a[i]`，`v = a[i+len/2]·w`，然后两格分别写 `u+v` 和 `u−v`。形状像蝴蝶展翅，故得名。
+- **位反转排列（bit-reversal permutation）**：迭代 FFT 的前置重排。把下标二进制反转后放位（如 N=4 时 01↔10），保证蝶形能按"长度 2、4、8…"的顺序原地自底向上合并。
+- **补零（zero padding）与循环卷积**：DFT 天然算的是"长度 N 的**循环**卷积"——下标绕圈。若 N ≥ 结果长度 len(a)+len(b)−1，该绕圈的项本来就该是 0，循环卷积等于普通卷积；不补够就会"折叠"，高位结果错加到低位上。cell1 把这一点列为必守纪律。
+- **舍入误差**：FFT 用浮点复数，每步都有微小误差。本章只在小规模（长度 < 30、系数绝对值 ≤ 100）用明确容差对拍，不把"结果接近整数"当成任意规模都精确的证明。
+- **NTT（数论变换）**：在模素数 p 的整数里造出"单位根"：需要 p−1 能被变换长度 N 整除（乘法群大小是 p−1，要有阶恰为 N 的元素），用原根 g 的 g^((p−1)/N) 当 ω。一切加减乘都取模，零浮点、零误差。
+- **原根（primitive_root）**：模 p 意义下"乘幂能遍历所有非零元素"的底数，比如 998244353 的原根是 3。它是 NTT 制造各阶单位根的原料。
+- **费马逆元**：素数模下 x 的逆元是 x^(p−2) mod p（费马小定理）。NTT 逆变换里除以 N、除以单位根都靠它变成乘幂。
+
+## 三、解决思路（一步步推导）
+
+**Step 1：先会手算朴素卷积。** c[i+j] += a[i]·b[j] 双重循环。[1,2]⊗[3,4]：c[0]+=1×3，c[1]+=1×4，c[2]+=2×3，然后 c[1]+=2×4 → [3,10,8]。
+
+**Step 2：DFT 手算一遍**（cell6 第二张表，输入 [1,2,3,4]，N=4，ω=e^(−2πi/4)=−i）：
+
+- X[0] = 1+2+3+4 = **10**（0 频是求和）
+- X[1] = 1 + 2(−i) + 3(−i)² + 4(−i)³ = 1 − 2i − 3 + 4i = **−2 + 2i**
+- X[2] = 1 − 2 + 3 − 4 = **−2**
+- X[3] = 1 + 2i − 3 − 4i = **−2 − 2i**
+
+**Step 3：验证 FFT 的蝶形确实算出同一个结果。** 先位反转重排：下标二进制 00,01,10,11 反转为 00,10,01,11，即位置 1↔2 互换，序列变 [1,3,2,4]。第一轮蝶形 length=2（ω₂=−1）：前两格 u=1,v=3 → 4、−2；后两格 u=2,v=4 → 6、−2。第二轮 length=4（ω₄=−i）：u=a[0]=4 与 a[2]·1=6 → 10、−2；u=a[1]=−2 与 a[3]·(−i)=2i → −2+2i、−2−2i。最终 [10, −2+2i, −2, −2−2i]，和 Step 2 逐点一致。
+
+**Step 4：卷积 = 点值相乘 + 逆变换。** 补零到 size（≥ 结果长度的 2 的幂），对 a、b 各做一次 FFT；对应点相乘得到"乘积多项式的点值"；再做一次**逆** FFT（把 ω 换成 e^(+2πi/N) 并整体除以 N）回到系数域。[1,2]、[3,4] 补零到 4，三条变换做完，取前 3 位就是 [3, 10, 8]。
+
+**Step 5：NTT 把复数换成模整数。** 例（cell8 用到）：mod=17、原根 g=3、N=4。先检查 17 是素数且 (17−1)%4==0；ω₄ = 3^((17−1)/4) = 3⁴ = 81 ≡ 13 (mod 17)。验证阶：13⁴ ≡ 1 且 13² ≡ 16 ≡ −1 ≠ 1，阶确为 4。之后蝶形同 FFT，只是每步乘完取模；逆变换用 13 的逆元（费马：13¹⁵ mod 17）当反向单位根，最后乘 N 的逆元 4¹⁵ mod 17 = ...（程序里 `pow(n,mod-2,mod)` 一步算出）。
+
+## 四、代码逐段讲解
+
+### 函数一：`convolve_naive(a, b)` —— 定义直译的参照
+
+```python
+def convolve_naive(a,b):
+    if not a or not b: return []
+    out=[0]*(len(a)+len(b)-1)
+    for i,x in enumerate(a):
+        for j,y in enumerate(b): out[i+j]+=x*y
+    return out
+```
+
+结果长度恰为 len(a)+len(b)−1（两个多项式次数相加）。双重循环把每对乘积累进 i+j 下标。任一输入为空，卷积为空。整数运算、绝对精确——它是后面所有快速算法的对拍标准。
+
+### 函数二：`fft(values, invert=False)` —— 迭代复数 FFT
+
+```python
+    a=list(map(complex,values)); n=len(a)
+    if not n: return []
+    if n&(n-1): raise ValueError('power-of-two transform length required')
+```
+
+先转成复数列表。`n&(n-1)` 是判"2 的幂"的位技巧（2 的幂二进制是 100…0，减 1 后是 011…1，按位与必为 0）。FFT 的分治结构要求长度是 2 的幂，否则报错。
+
+```python
+    j=0
+    for i in range(1,n):
+        bit=n>>1
+        while j&bit: j^=bit; bit>>=1
+        j^=bit
+        if i<j: a[i],a[j]=a[j],a[i]
+```
+
+位反转重排。j 始终维护"i 的二进制反转值"：它像"反着数的加法进位"——低位满了就清零并向高位进 1。`if i<j` 才交换是防止一对位置被换两次又换回去。
+
+```python
+    length=2
+    while length<=n:
+        root=exp((2j if invert else -2j)*pi/length)
+        for start in range(0,n,length):
+            w=1
+            for offset in range(length//2):
+                u=a[start+offset]; v=a[start+offset+length//2]*w
+                a[start+offset]=u+v; a[start+offset+length//2]=u-v; w*=root
+        length*=2
+    return [x/n for x in a] if invert else a
+```
+
+自底向上：块长从 2 倍增到 n。root 是当前长度的单位根（正向 e^(−2πi/len)，逆向 e^(+2πi/len)——只差一个正负号，所以正逆变换共用同一份代码）。每块内 w 从 1 起按 ω^offset 递乘；蝶形两行就是"和写上半、差写下半"。逆向变换最后整体除以 n（DFT 逆的归一化因子）。
+
+### 函数三：`convolve_fft(a, b)` —— 浮点卷积
+
+```python
+def convolve_fft(a,b):
+    # Returns floating approximations, not an exact arbitrary-integer convolution.
+    if not a or not b: return []
+    size=1; result_length=len(a)+len(b)-1
+    while size<result_length: size*=2
+    left=fft(list(a)+[0]*(size-len(a))); right=fft(list(b)+[0]*(size-len(b)))
+    return [x.real for x in fft([x*y for x,y in zip(left,right)],True)[:result_length]]
+```
+
+注释是契约的一部分：返回的是**近似值**，不是任意整数的精确卷积。`size` 翻倍到不小于结果长度——这就是"补零防折叠"的落点：size ≥ result_length 保证循环卷积里本该绕回来的项全落在补的零上。两个正变换、逐点乘、一个逆变换，最后取实部（虚部只剩舍入残渣）并截断到真实结果长度。
+
+### 前置：`_is_prime(mod)` —— 带缓存的素性检查
+
+```python
+@cache
+def _is_prime(mod):
+    if mod<2: return False
+    if mod%2==0: return mod==2
+    return all(mod%d for d in range(3,isqrt(mod)+1,2))
+```
+
+试除到 √mod 的奇数即可。`@cache` 让同一模数只验一次——cell4 说这笔 O(√p) 的账初次要付、之后缓存免单。
+
+### 函数四：`ntt(values, invert, mod, primitive_root)` —— 模域版本
+
+```python
+    a=[x%mod for x in values]; n=len(a)
+    if not n: return []
+    if n&(n-1) or not _is_prime(mod) or (mod-1)%n: raise ValueError('prime modulus and power-of-two length dividing mod-1 required')
+```
+
+先把所有输入压进 [0, mod)。三重资格检查：长度是 2 的幂、模数是素数、长度整除 p−1。缺一个就没有阶为 N 的单位根，整个变换的数学地基就塌了。
+
+```python
+    root_n=pow(primitive_root,(mod-1)//n,mod)
+    if pow(root_n,n,mod)!=1 or n>1 and pow(root_n,n//2,mod)==1: raise ValueError('root does not provide required order')
+```
+
+造出候选 ω_N = g^((p−1)/N)，再**验阶**：ω^N 必须是 1，且 ω^(N/2) 不能是 1（否则阶只有 N/2，蝶形的"对半"恒等式不成立）。用户传进来的所谓原根可能货不对板，这两行就是质检。
+
+```python
+    length=2
+    while length<=n:
+        root=pow(primitive_root,(mod-1)//length,mod)
+        if invert: root=pow(root,mod-2,mod)
+```
+
+蝶形骨架与 FFT 完全相同（连位反转那段都一字不差，故此处从略），差别全在算术：每一层现造该长度的单位根；逆向时用费马逆元 `pow(root,mod-2,mod)` 把 root 换成它的逆。
+
+```python
+                u=a[start+offset]; v=a[start+offset+length//2]*w%mod
+                a[start+offset]=(u+v)%mod; a[start+offset+length//2]=(u-v)%mod; w=w*root%mod
+    if invert:
+        inv=pow(n,mod-2,mod); a=[x*inv%mod for x in a]
+    return a
+```
+
+每步乘完立刻取模，绝不让数变大（模 998244353 下乘积不超过约 10¹⁸，Python 大整数也扛得住，但保持小数是好习惯）。逆变换结尾乘 N 的逆元，对应 FFT 的"除以 n"。
+
+### 函数五：`convolve_ntt(a, b, mod=998244353, primitive_root=3)` 
+
+```python
+def convolve_ntt(a,b,mod=998244353,primitive_root=3):
+    if not a or not b: return []
+    size=1; length=len(a)+len(b)-1
+    while size<length: size*=2
+    left=ntt(list(a)+[0]*(size-len(a)),False,mod,primitive_root)
+    right=ntt(list(b)+[0]*(size-len(b)),False,mod,primitive_root)
+    return ntt([x*y%mod for x,y in zip(left,right)],True,mod,primitive_root)[:length]
+```
+
+与 convolve_fft 逐行同构：补零到 2 的幂、两个正变换、逐点乘（乘完取模）、逆变换、截断。默认模数 998244353 = 119·2²³+1 是竞赛标配（p−1 里的 2 的幂因子高达 2²³，支持很长的变换），3 是它的原根。
+
+## 五、为什么是对的？复杂度是多少？（说人话）
+
+**为什么"变换—点乘—逆变换"就是卷积？** 一个多项式由它在 N 个不同点上的取值唯一决定（次数 < N 时）。两个次数和 < N 的多项式，在每一点上，乘积的值就是两个值的乘积。所以"求值（DFT）→ 逐点乘 → 插值（逆 DFT）"得到的正是乘积多项式的系数——把 O(n·m) 的系数域乘法换成了 N 次点值乘法，代价是两头的变换，而变换有快速算法。
+
+**为什么蝶形的两条恒等式够用？** 按奇偶拆分后，偶下标项用的是 (ω_N²)^k = ω_(N/2)^k——这正是"半长变换的单位根"，所以两个半长 DFT 直接复用；而 ω_N^(k+N/2) = −ω_N^k 说明奇偶两半在同一 k 上的贡献只差一个正负号，拼回去就是 u+v 与 u−v 两个输出。一条"平方减半"、一条"转半圈变号"，合起来就是蝶形。
+
+**为什么必须补零？** 长度 N 的 DFT 天生把下标按 mod N 理解（ω^N=1，转一圈回来），所以它算的是循环卷积：本该落在下标 N+2 的结果会被加到下标 2 上。结果长度是 len(a)+len(b)−1，只要 N ≥ 它，"绕回来的下标"对应的真实系数全是 0，加也白加，循环卷积与普通卷积就毫无区别。
+
+**为什么 NTT 的限制是"素数 + N 整除 p−1"？** 模素数 p 的世界里，所有非零数乘法构成的群恰有 p−1 个元素；想找一个"乘 N 次恰好转一圈（阶为 N）"的元素，N 就必须整除 p−1。有了它，"转半圈变号"（ω^(N/2) ≡ −1）等全部蝶形性质在模世界里逐条成立，于是 FFT 的每一步都能一字不差地照搬，只是把浮点运算换成模运算——从此没有舍入误差，代价是结果只在模 p 意义下正确。
+
+**复杂度，代入数字感受一下：** 朴素 O(n·m)；两个 10⁵ 长的序列就是 10¹⁰ 次乘法，单线程要几分钟。FFT/NTT 补零后 N=2¹⁷≈1.3×10⁵，三层变换各 N log₂N ≈ 1.3×10⁵×17 ≈ 220 万次蝶形，总计约 700 万次操作，不到一秒——从分钟级降到秒级。空间 O(N)。注意 cell4 的提醒：NTT 首次验证素性另付 O(√p)（998244353 的 √p≈31623，试除一万多次，一次付清后缓存）。FFT 的精确性只在本章测试的范围内背书（长度 < 30、|系数| ≤ 100、容差 1e-7）；想用浮点 FFT 恢复任意大整数，必须先做误差上界分析，或改用 NTT 多模组合。
+
+## 六、测试用例在测什么
+
+- `assert convolve_naive([1,2],[3,4])==[3,10,8]`：朴素卷积的正常值，锚定第一节的例子。
+- `assert convolve_ntt([1,2],[3,4])==[3,10,8]`：小系数下模 998244353 的结果与精确整数一致（没碰到模），验证 NTT 主流程。
+- 往返恒等段（n=1..32 的 2 的幂）：`fft(fft(x), True)` 回到 x（容差 1e-9）、`ntt(ntt(x))` 回到 x mod p。这测的是"正逆变换互逆"这个最基本的契约，与卷积无关。
+- 140 轮随机对拍：长度 1..29、系数 −100..100，朴素精确值 vs `convolve_fft`（用 `isclose(rel_tol=1e-10, abs_tol=1e-7)` 判近似相等——**不用 ==**，因为浮点）vs `convolve_ntt`（模意义下精确相等）。覆盖负系数、不等长输入。
+- `assert ntt([1,2,3,4],False,17,3)`：换一个小模数 17（4 整除 16，资格成立）也能正常工作，验证参数不是写死 998244353。
+- `try: ntt([1,2,3,4],False,21,2) except ValueError: pass else: raise`：模数 21 是合数，必须报错。`else: raise` 的写法意思是"没抛异常反而算你错"——这是守门测试。
+- `assert convolve_fft([],[])==convolve_ntt([],[])==[]`：空输入边界。
+
+## 七、练习思路提示
+
+**练习 1（小整数多项式对拍）：** 提示：自己出 3~5 组小数据（含负系数、不等长、单元素），先手算多项式乘积（比如 (1−x)(1+x)=1−x²，卷 [1,−1]⊗[1,1] 应得 [1,0,−1]），再分别跑 `convolve_naive`、`convolve_fft`、`convolve_ntt` 三家对数。边界记得补：空数组、长度 1、以及"补零刚好卡在 2 的幂"的长度（如两条长度 3 的序列结果长 5，size 补到 8）。验收时说清楚为什么 FFT 版可能出现 0.9999999999 而 NTT 版永远是整数。
+
+**练习 2（LC43 先掌握竖式乘法）：** 提示：把字符串 "123"×"456" 当作系数倒序的多项式 [3,2,1]⊗[6,5,4]，卷积后统一处理进位得到 56088。先用朴素卷积把这道题写对（这就是竖式乘法本身），FFT 只是 n 特大时的加速手段而不是必需品。边界：前导零（"0"×"999"）、单字符、结果为零的表示。做完再想：什么规模下 FFT 版才会真的比朴素快（提示：Python 里 FFT 的常数不小，几百位以内朴素常常更快）？
+
+## 八、对应 LeetCode 题目
+
+- **43. Multiply Strings（字符串相乘）**：大数乘法 = 系数卷积 + 进位，正是本章 `convolve_*` 的直接用武之地；练习 2 强调的是先把朴素竖式（`convolve_naive` 思路）写扎实，再视规模决定是否上 FFT——练的是"卷积建模 + 知道快速算法的适用边界"。
